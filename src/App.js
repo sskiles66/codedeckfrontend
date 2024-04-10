@@ -5,8 +5,13 @@ import Navbar from './SharedComponents/Navbar';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LearningPage from './Pages/LearningPage/LearningPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import axios from "axios";
 
 function App() {
+
+  axios.defaults.baseURL = "http://localhost:4000";
+  axios.defaults.withCredentials = true;
+
   return (
       <BrowserRouter>
         <Navbar />
