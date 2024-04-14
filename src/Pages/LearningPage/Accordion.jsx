@@ -3,15 +3,21 @@ import React from "react";
 // import "../../Styles/styles.css"
 
 
-export default function Accordion() {
+export default function Accordion(props) {
   return (
     <div className="accordion">
-        <h4>Tags</h4>
-        <hr></hr>
-        <h5>Summary:</h5>
-        <p>Summary here</p>
-        <h5>mnemonics:</h5>
-        <p>mnenmocs here</p>
+        
+
+        {props.subs.map((item, index) => (
+        <div key={index}>
+          <h4>{item.sub_name}</h4>
+          <hr></hr>
+          <h5>mnemonics:</h5>
+          <p>{item.mnemonics}</p>
+          <h5>Definition:</h5>
+          <p>{item.definition}</p>
+        </div>
+      ))}
 
     </div>
   );

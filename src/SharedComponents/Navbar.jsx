@@ -1,5 +1,5 @@
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import "../Styles/global.css"
 
@@ -9,21 +9,26 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
 
 
 export default function Navbar() {
 
 
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   const [profileToggle, setProfileToggle] = useState(false);
 
 
-  
+  async function handleLogin(){
+    await loginWithRedirect();
+    
+  }  
 
   return (
     <div className="nav-container">
-      <img className="logo" src="plogo.png" />
+      <img className="logo" src="/plogo.png" />
       <input
         type="text"
         className="searchbar"
@@ -46,7 +51,7 @@ export default function Navbar() {
                 <button onClick={() => logout()}>Logout</button>
               </> 
             ) : (
-              <button onClick={() => loginWithRedirect()}>Log in</button>
+              <button onClick={() => handleLogin()}>Log in</button>
             )}
           </div>
         ) : (
