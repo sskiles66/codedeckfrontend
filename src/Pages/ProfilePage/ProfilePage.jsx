@@ -82,7 +82,7 @@ export default function ProfilePage() {
   
 
   return (
-    <div className="placeholder">
+    <div className="profilePageContainer">
       <h1>Profile Page</h1>
       {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""}
       {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}

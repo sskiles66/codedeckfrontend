@@ -12,7 +12,6 @@ export default function LandingPage() {
 
   return (
     <div className="hero">
-      <p>LandingPage</p>
         <Hero />
         <MostRecent />
         <MostPop />

@@ -1,6 +1,15 @@
+
+body {
+    background-color: #FCF7FF;
+}
+
+/* h1, h2, h3, p {
+    color:#35FF69
+} */
+
 /*Navbar*/
 .nav-container {
-    background-color: bisque;
+    background-color: #2C1A1D;
     /* This fixed upper space */
     /* display: grid; 
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr; */
@@ -9,15 +18,18 @@
     /* justify-items: center; 
     align-items: center;  */
     padding: 10px;
+    align-items: center;
+    border-bottom: #35FF69 solid 2px;
 }
 
 .logo {
-    width: 50px;
+    width: 75px;
     /* grid-column: 1/2; */
 }
 
 .searchbar {
     width: 50%;
+    height: 50%;
     background-color: #f5f5f5; /* Light gray background */
     border: 1px solid #ccc; /* Gray border */
     padding: 10px; /* Add some padding for spacing */
@@ -30,24 +42,124 @@
 
 .stats {
     /* grid-column: 5/6; */
+    color: #35FF69
     
 }
 
 .profile {
     grid-column: 6/7;
     /* width: 100px; */
-    font-size: 200%;
+    /* font-size: 200%; */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    
 }
+
+.profileButton {
+    background-color: transparent;
+    
+}
+
+.profileIcon {
+    color:#35FF69;
+    font-size: 30px;
+}
+
+.navDropDown {
+    position: absolute;
+    
+    top: 100%; /* Position the dropdown below the button */
+
+    /* left: 50%;  */
+    /* Position at the center horizontally */
+    /* transform: translateX(-50%);  */
+    /* Offset to align with profile icon */
+
+    background-color: white; /* Set background color (optional) */
+    border: 1px solid lightgray; /* Add a border (optional) */
+    padding: 5px; /* Add some padding (optional) */
+    width: 100px;
+}
+
+.navDropDown >* {
+    padding: 5px;
+    margin: 5px;
+}
+
+/*Hero*/
+
+.hero-container{
+    margin: 50px 0;
+}
+
+.hero img {
+    
+    width: 1000px;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero-img {
+    position: relative;
+}
+
+.heroSearchContainer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+.heroSearch{
+    background-color: #f5f5f5; /* Light gray background */
+    border: 1px solid #ccc; /* Gray border */
+    padding: 10px; /* Add some padding for spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 14px; /* Font size */
+    color: #333; /* Text color */
+}
+
+/*Landing Page Cards*/
+
+.mrmpContainer {
+    max-width: 1000px;
+    margin: 50px auto;
+    text-align: left;
+    border: 3px solid black;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-around;    
+}
+
+.card {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: #2C1A1D;
+    color:#35FF69;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
 
 
 /*Learning Page styles*/
 
 
 .learningPageContainer{
-    max-width: 800px;
+    max-width: 1000px;
     /* background-color: #333; */
     margin: 0 auto;
     text-align: center;
@@ -75,4 +187,14 @@ table {
 .leaderboard, .summary, .accordion{
     border: solid black 3px;
     margin-bottom: 5px;
+}
+
+
+/*Profile page styles*/
+
+
+.profilePageContainer{
+    max-width: 1000px;
+    margin: 0 auto;
+
 }

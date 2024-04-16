@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <div className="hero-container">
         <div className="hero-img">
-            <img src="hero.png"/>
+            <img src="hero2.jpg"/>
 
             <div className="heroSearchContainer">
                 <input

@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <div className="nav-container">
-      <img className="logo" src="/plogo.png" />
+      <Link to="/" type="button"><img className="logo" src="/logo2.jpg" /></Link>
       <input
         type="text"
         className="searchbar"
@@ -40,14 +40,14 @@ export default function Navbar() {
       />
       <p className="stats">Stats</p>
       <div className="profile">
-        <button onClick={() => setProfileToggle(!profileToggle)}>
-          <CgProfile />
+        <button className="profileButton" onClick={() => setProfileToggle(!profileToggle)}>
+          <CgProfile className="profileIcon"/>
         </button>
         {profileToggle ? (
-          <div>
+          <div className="navDropDown">
             {isAuthenticated ? (
               <>
-                <Link to="/profilePage" type="button">See Profile</Link>
+                <button><Link to="/profilePage" type="button">See Profile</Link></button>
                 <button onClick={() => logout()}>Logout</button>
               </> 
             ) : (

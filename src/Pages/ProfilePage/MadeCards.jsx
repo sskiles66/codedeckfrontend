@@ -11,15 +11,14 @@ export default function MadeCards(props) {
   return (
     <div className="cardContainer">
       {props.cards.map((item, index) => (
-        
-            <div className="card" key={index}>
-                <Link to={`/learningPage/${item._id}`} key={item._id}>
-                    <h1>{item.name}</h1>
-                    <hr></hr>
-                    <p>{item.summary}</p>
-                </Link>
-            </div>
-        
+
+        <Link to={`/learningPage/${item._id}`} key={item._id} style={{ textDecoration: 'none' }}>
+          <div className="card" key={index}>
+            <h1>{item.name}</h1>
+            <hr></hr>
+            <p>{item.summary}</p>  
+          </div>
+        </Link>
       ))}
     </div>
   );
