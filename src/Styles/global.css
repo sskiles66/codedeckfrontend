@@ -189,6 +189,48 @@ table {
     margin-bottom: 5px;
 }
 
+/* Basic styling */
+.lpEditForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 50px 50px;
+  }
+  
+  .lpEditForm label {
+    display: inline-block;
+    width: 120px;
+    text-align: left;
+  }
+  
+  .lpEditForm input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .lpEditForm button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Optional hover effects */
+  .lpEditForm button[type="submit"]:hover {
+    background-color: #45A049;
+  }
+  
+  .lpEditForm input[type="text"]:focus {
+    border: 1px solid #007bff;
+  }
+
 
 /*Profile page styles*/
 
@@ -197,4 +239,31 @@ table {
     max-width: 1000px;
     margin: 0 auto;
 
+}
+
+.profileDataContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin: 75px 0;
+}
+
+.profileDataImageContainer img{
+    width: 150px;
+    border-radius: 20px;
+}
+
+.profileMakePageButtonContainer{
+    margin: 50px auto;
+    width: 200px;
+
+}
+
+.profileMakePageButton{
+    background-color: #2C1A1D;
+    color: #35FF69;
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
 }

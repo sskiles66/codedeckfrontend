@@ -149,7 +149,7 @@ export default function LearningPage() {
           {/* <input value={editState} onChange={handleChange}></input> */}
 
           {role == "creator" ? 
-            <div>
+            <div className="lpEditForm">
               <form onSubmit={handleEditSubmit}>
                 <label for="name">Name:</label>
                 <input value={editName} onChange={handleNameChange} type="text" id="name" name="name"></input>
@@ -165,7 +165,8 @@ export default function LearningPage() {
             </div>
            : ""}
 
-          <LeaderBoard />
+          {/* COme back to this once game is good to go */}
+          {/* <LeaderBoard /> */}  
 
           <div className="summary">
             <h2>Summary</h2>
@@ -173,7 +174,7 @@ export default function LearningPage() {
           </div>
 
           {role == "creator" ? 
-            <div>
+            <div className="lpEditForm">
               <form onSubmit={handleSubSubmit}>
                 <label for="sub_name">Name:</label>
                 <input value={editSubName} onChange={handleSubNameChange} type="text" id="sub_name" name="sub_name"></input>

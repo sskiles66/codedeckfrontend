@@ -55,7 +55,7 @@ export default function ProfilePage() {
       getPagesForUser();
     }
 
-  }, []);
+  }, [user, isAuthenticated]); //Dependicies are so that even if the page is refreshed, this effect hook still runs
 
   async function handlePageCreation(e){
     e.preventDefault();
@@ -79,17 +79,40 @@ export default function ProfilePage() {
     }
   }
 
-  
+  // console.log(user.picture)
 
   return (
     <div className="profilePageContainer">
       <h1>Profile Page</h1>
       {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""}
+
+      {user ? <h1>{user.name}</h1> : ""}
+
+      {user ?
+        <div className="profileDataContainer">
+          <div className="profileDataImageContainer">
+            <img src={user.picture} alt="Image of user" />
+          </div>
+          <div className="profileDataDataContainer">
+            <p>Data: hjkfhdjsfkhdk</p>
+            <p>Data: hjkfhdjsfkhdk</p>
+            <p>Data: hjkfhdjsfkhdk</p>
+            <p>Data: hjkfhdjsfkhdk</p>
+            <p>Data: hjkfhdjsfkhdk</p>
+          </div>
+        </div>
+        : ""}
+
       {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}
 
       <MadeCards cards={madePages}/>
 
-      {isAuthenticated ? <button onClick={handlePageCreation}>Make a page</button> : ""}
+      {isAuthenticated ? 
+      <div className="profileMakePageButtonContainer">
+        <button className="profileMakePageButton" onClick={handlePageCreation}>Make a page</button>
+      </div>
+      : ""}
+
     </div>
   );
 }
