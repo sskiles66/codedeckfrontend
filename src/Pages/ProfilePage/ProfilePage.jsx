@@ -13,37 +13,37 @@ export default function ProfilePage() {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   async function test(){
+  //     const accessToken = await getAccessTokenSilently();
+  //     const response = await axios.get("http://localhost:4000/test", {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //         // Add any other custom headers here if needed
+  //       },
+  //     });
+    
+  //     console.log('Response:', response.data);
+
+  //   }
+
+  //   if (user && isAuthenticated){
+  //     test();
+  //   }
+
+  // }, []);
+
   useEffect(() => {
-    async function test(){
+    async function getPagesForUser(){
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.get("http://localhost:4000/test", {
+
+
+      const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-by-user/${user.sub}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           // Add any other custom headers here if needed
         },
       });
-    
-      console.log('Response:', response.data);
-
-    }
-
-    if (user && isAuthenticated){
-      test();
-    }
-
-  }, []);
-
-  useEffect(() => {
-    async function getPagesForUser(){
-      // const accessToken = await getAccessTokenSilently();
-      // const response = await axios.get("http://localhost:4000/test", {
-      //   headers: {
-      //     Authorization: `Bearer ${accessToken}`,
-      //     // Add any other custom headers here if needed
-      //   },
-      // });
-
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-by-user/${user.sub}`);
     
       console.log('Response:', response.data);
 
@@ -60,6 +60,7 @@ export default function ProfilePage() {
   async function handlePageCreation(e){
     e.preventDefault();
     try {
+      const accessToken = await getAccessTokenSilently();
       const createUserResponse = await axios.post(
           'http://localhost:4000/api/learningPage/create',
           {
@@ -69,6 +70,12 @@ export default function ProfilePage() {
               sub_topics: [], 
               creator: user.sub, 
               
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              // Add any other custom headers here if needed
+            },
           }
       );
 

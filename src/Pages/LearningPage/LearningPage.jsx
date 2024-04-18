@@ -7,7 +7,7 @@ import axios from "axios";
 
 export default function LearningPage() {
 
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   const [pageData, setPageData] = useState();
 
@@ -78,13 +78,21 @@ export default function LearningPage() {
 
   async function handleEditSubmit(e){
     e.preventDefault();
+    
 
     try {
+      const accessToken = await getAccessTokenSilently();
       const response = await axios.patch("http://localhost:4000/api/learningPage/edit-name", {
           name: editName, 
           image: editImage,
           summary: editSummary,
           page_id: id
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          // Add any other custom headers here if needed
+        },
       });
 
         console.log('Response:', response.data);
@@ -122,6 +130,7 @@ export default function LearningPage() {
     e.preventDefault();
 
     try {
+      const accessToken = await getAccessTokenSilently();
       const response = await axios.patch("http://localhost:4000/api/learningPage/new-subtopic", {
           sub_name: editSubName, 
           definition: editDefinition,
@@ -130,6 +139,12 @@ export default function LearningPage() {
           image: editImage2,
           audio: editAudio,
           page_id: id
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          // Add any other custom headers here if needed
+        },
       });
 
         console.log('Response:', response.data);
