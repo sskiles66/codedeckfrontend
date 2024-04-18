@@ -81,6 +81,10 @@ export default function ProfilePage() {
 
   // console.log(user.picture)
 
+  if(user){
+    console.log(user.picture)
+  }
+
   return (
     <div className="profilePageContainer">
       <h1>Profile Page</h1>
@@ -88,10 +92,10 @@ export default function ProfilePage() {
 
       {user ? <h1>{user.name}</h1> : ""}
 
-      {user ?
+      {user && isAuthenticated ?
         <div className="profileDataContainer">
           <div className="profileDataImageContainer">
-            <img src={user.picture} alt="Image of user" />
+            <img src={user?.picture} alt="Image of user" />
           </div>
           <div className="profileDataDataContainer">
             <p>Data: hjkfhdjsfkhdk</p>
