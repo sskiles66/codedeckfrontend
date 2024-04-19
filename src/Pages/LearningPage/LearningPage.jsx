@@ -82,7 +82,7 @@ export default function LearningPage() {
 
     try {
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.patch("http://localhost:4000/api/learningPage/edit-name", {
+      const response = await axios.patch("http://localhost:4000/api/learningPage/edit-page", {
           name: editName, 
           image: editImage,
           summary: editSummary,

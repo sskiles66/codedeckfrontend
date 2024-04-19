@@ -149,6 +149,7 @@ h1, h2, h3, h4, h5 {
 .cardContainer {
     display: flex;
     justify-content: space-around;    
+    flex-wrap: wrap;
 }
 
 .card {
