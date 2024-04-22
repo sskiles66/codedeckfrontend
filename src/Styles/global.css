@@ -114,7 +114,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .hero-img {
+    max-width: 1000px;
     position: relative;
+    margin: 0 auto;
 }
 
 .heroSearchContainer {
@@ -122,6 +124,19 @@ h1, h2, h3, h4, h5 {
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
+}
+
+/* Has to be absolute as well as other styles don't work */
+.heroTitle {
+    color:#35FF69;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: rgba(44, 26, 29, 0.7);
+    border-radius: 10px;
+    width: 100%;
+
 }
 
 .heroSearch{
@@ -161,9 +176,15 @@ h1, h2, h3, h4, h5 {
     width: 200px;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
 }
 
-
+/* For temporary soltion to line clamping */
+.card p {
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Clip overflowing content */
+    text-overflow: ellipsis; /* Show ellipsis (...) */
+}
 
 
 /*Learning Page styles*/

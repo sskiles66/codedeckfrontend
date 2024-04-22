@@ -12,6 +12,10 @@ export default function Hero() {
         <div className="hero-img">
             <img src="hero2.jpg"/>
 
+            <div className="heroTitle">
+                <h1>CodeDeck</h1>
+            </div>
+
             <div className="heroSearchContainer">
                 <input
                     type="text"
