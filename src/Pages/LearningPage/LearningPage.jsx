@@ -19,6 +19,10 @@ export default function LearningPage() {
 
   const [reFetch, setReFetch] = useState(false);
 
+  const [showMainEdit, setShowMainEdit] = useState(false);
+
+  const [showSubEdit, setShowSubEdit] = useState(false);
+
   useEffect(() => {
     async function fetchPageData(){
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-page/${id}`);
@@ -52,10 +56,6 @@ export default function LearningPage() {
         <>
           <h1>{pageData.name}</h1>
 
-          {role == "creator" ? 
-            <EditMain reFetch={reFetch} onReFetch={setReFetch}/>
-           : ""}
-
           {/* COme back to this once game is good to go */}
           {/* <LeaderBoard /> */}  
 
@@ -64,11 +64,22 @@ export default function LearningPage() {
             <p>{pageData.summary}</p>
           </div>
 
-          {role == "creator" ? 
-            <EditSub reFetch={reFetch} onReFetch={setReFetch}/>
-           : ""}
+          {role === "creator" && (
+            <>
+              <button onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
+              {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} />}
+            </>
+          )}
 
           <Accordion subs={pageData.sub_topics}/>
+
+          {role === "creator" && (
+            <>
+              <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
+              {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch}/>}
+            </>
+          )}
+
         </>
       ) : (
         ""

@@ -270,6 +270,19 @@ table {
     border: solid black 3px;
 }
 
+.learnAccordionItemHeader {
+    text-align: left;
+    margin-left: 20px;
+
+    position: relative;
+}
+
+.learnAccordionItemHeaderExpand {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
 .learnAccordionGrid{
     display: grid;
     grid-template-columns: 1fr 1fr;
