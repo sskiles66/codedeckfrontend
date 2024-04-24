@@ -5,6 +5,7 @@ import Navbar from './SharedComponents/Navbar';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LearningPage from './Pages/LearningPage/LearningPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import QueryPage from './Pages/QueryPage/QueryPage';
 import axios from "axios";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<LandingPage />}/>
           <Route path="/learningPage/:id" element={<LearningPage />}/>
           <Route path="/profilePage" element={<ProfilePage />}/>
+          <Route path="/queryPage/:searchTerm" element={<QueryPage />}/>
 
         </Routes>
       </BrowserRouter>

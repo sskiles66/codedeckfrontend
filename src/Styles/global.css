@@ -2,15 +2,17 @@
 
 
 body {
-    background-color: #FCF7FF;
+    background-color: #171716;
 }
 
 p, a {
     font-family: "Inter", sans-serif;
+    color:#35FF69;
 }
 
 h1, h2, h3, h4, h5 {
     font-family: "Kode Mono", monospace;
+    color:#35FF69;
 }
 
 /* h1, h2, h3, p {
@@ -23,8 +25,9 @@ h1, h2, h3, h4, h5 {
     /* This fixed upper space */
     /* display: grid; 
     grid-template-columns: 1fr 1fr 2fr 1fr 1fr; */
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* justify-content: space-around; */
     /* justify-items: center; 
     align-items: center;  */
     padding: 10px;
@@ -32,13 +35,24 @@ h1, h2, h3, h4, h5 {
     border-bottom: #35FF69 solid 2px;
 }
 
+.logoContainer {
+    grid-column: 1/2;
+    justify-self: center;
+}
+
 .logo {
     width: 75px;
     /* grid-column: 1/2; */
 }
 
+.searchbarContainer {
+    grid-column: 2/4;
+    width: 100%;
+    text-align: center;
+}
+
 .searchbar {
-    width: 50%;
+    width: 70%;
     height: 50%;
     background-color: #f5f5f5; /* Light gray background */
     border: 1px solid #ccc; /* Gray border */
@@ -52,12 +66,14 @@ h1, h2, h3, h4, h5 {
 
 .stats {
     /* grid-column: 5/6; */
-    color: #35FF69
+    color: #35FF69;
+    grid-column: 4/5;
+    margin: 0 auto;
     
 }
 
 .profile {
-    grid-column: 6/7;
+    grid-column: 5/6;
     /* width: 100px; */
     /* font-size: 200%; */
     display: flex;
@@ -156,7 +172,7 @@ h1, h2, h3, h4, h5 {
     max-width: 1000px;
     margin: 50px auto;
     text-align: left;
-    border: 3px solid black;
+    border: 3px solid #35FF69;
     margin-bottom: 5px;
     padding: 10px;
 }
@@ -227,7 +243,7 @@ table {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #35FF69;
     border-radius: 5px;
     margin: 50px 50px;
   }
@@ -236,12 +252,13 @@ table {
     display: inline-block;
     width: 120px;
     text-align: left;
+    color: #35FF69;
   }
   
   .lpEditForm input[type="text"] {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #35FF69;
     border-radius: 3px;
   }
   
@@ -267,7 +284,7 @@ table {
 
 .learnAccordionItem{
     margin: 10px 20px;
-    border: solid black 3px;
+    border: solid #35FF69 3px;
 }
 
 .learnAccordionItemHeader {
