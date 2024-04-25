@@ -20,7 +20,7 @@ export default function EditSub(props) {
   
     const [editMnemonics, setEditMnemonics] = useState("");
   
-    const [editImage2, setEditImage2] = useState("");
+    const [editImage2, setEditImage2] = useState();
   
     const [editAudio, setEditAudio] = useState("");
 
@@ -42,10 +42,24 @@ export default function EditSub(props) {
         setEditMnemonics(e.target.value)
     }
 
-    function handleImage2Change(e) {
-        setEditImage2(e.target.value)
-    }
+    const handleImage2Change = (event) => {
+        const file = event.target.files[0];
+      
+        if (file) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = (e) => {
+            const base64Image = e.target.result;
+            setEditImage2(base64Image); // Update state with base64 data (optional)
+            // handlePostToDb(base64Image);
+          };
+        } else {
+          // Handle case where no file is selected (optional)
+          setEditImage2("");
+        }
+    };
 
+    console.log(editImage2)
     function handleAudioChange(e) {
         setEditAudio(e.target.value)
     }
@@ -94,8 +108,14 @@ export default function EditSub(props) {
                 <label for="mnemonics">Mnemonics:</label>
                 <input value={editMnemonics} onChange={handleMnemonicsChange} type="text" id="mnemonics" name="mnemonics"></input>
 
-                <label for="image">Image:</label>
-                <input value={editImage2} onChange={handleImage2Change} type="text" id="image" name="image"></input>
+                <label htmlFor="image">Image:</label>
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    onChange={handleImage2Change}
+                    accept="image/*"
+                />
 
                 <label for="audio">Audio:</label>
                 <input value={editAudio} onChange={handleAudioChange} type="text" id="audio" name="audio"></input>

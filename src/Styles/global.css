@@ -303,8 +303,28 @@ table {
 .learnAccordionGrid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* text-align: left;
-    margin: 10px; */
+    text-align: left;
+    margin: 20px;
+    
+}
+
+.learnAccordionAnalogy{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.learnAccordionMnemonics{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.learnAccordionImage{
+    grid-column: 2/3;
+    grid-row: 1/3;
+}
+
+.learnAccordionImage img{
+    max-width: 100%;
 }
 
 

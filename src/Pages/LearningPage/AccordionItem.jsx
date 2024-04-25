@@ -24,13 +24,17 @@ export default function AccordionItem(props) {
                 <hr></hr>
                 {/* Image and audio will eventually be included */}
                 <div className="learnAccordionGrid">
-                  <div>
+                  <div className="learnAccordionAnalogy">
                     <h5>Analogy:</h5>
                     <p>{props.item.analogy}</p>
                   </div>
-                  <div>
+                  <div className="learnAccordionMnemonics">
                     <h5>Mnemonics:</h5>
                     <p>{props.item.mnemonics}</p>
+                  </div>
+                  <div className="learnAccordionImage">
+                    <h5>Image:</h5>
+                    <img src={`${props.item.image}`} alt="Your Image" />
                   </div>
                 </div>
               </div>
