@@ -363,3 +363,11 @@ table {
     padding: 20px;
     border-radius: 10px;
 }
+
+
+/* Query Page Styles*/
+.queryPageContainer{
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
