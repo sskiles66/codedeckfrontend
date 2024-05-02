@@ -64,6 +64,13 @@ h1, h2, h3, h4, h5 {
     color: #333; /* Text color */
 }
 
+.searchbarContainer button {
+    padding: 10px;
+    background-color: #f5f5f5; /* Light gray background */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+}
+
 .stats {
     /* grid-column: 5/6; */
     color: #35FF69;
@@ -85,6 +92,8 @@ h1, h2, h3, h4, h5 {
 
 .profileButton {
     background-color: transparent;
+    border: none;
+    cursor: pointer;
     
 }
 
@@ -112,6 +121,11 @@ h1, h2, h3, h4, h5 {
 .navDropDown >* {
     padding: 5px;
     margin: 5px;
+}
+
+.navDropDown button a {
+    color: black;
+    text-decoration: none;
 }
 
 /*Hero*/
@@ -211,6 +225,16 @@ h1, h2, h3, h4, h5 {
     /* background-color: #333; */
     margin: 0 auto;
     text-align: center;
+}
+
+.learningPageContainer button {
+    background-color: #2C1A1D;
+    color:#35FF69;
+    padding: 10px;
+}
+
+.learningPageContainer hr {
+    border-color:#35FF69;
 }
 
 table {

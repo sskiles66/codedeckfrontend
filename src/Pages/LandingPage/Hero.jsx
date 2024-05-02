@@ -16,7 +16,7 @@ export default function Hero() {
                 <h1>CodeDeck</h1>
             </div>
 
-            <div className="heroSearchContainer">
+            {/* <div className="heroSearchContainer">
                 <input
                     type="text"
                     className="heroSearch"
@@ -26,7 +26,7 @@ export default function Hero() {
                     //   setValue(e.target.value); // Update the search input value
                     // }}
                 />
-            </div>
+            </div> */}
 
         </div>
     </div>
