@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import MadeCards from "./MadeCards";
+import Cards from "../../SharedComponents/Cards";
 
 export default function ProfilePage() {
 
@@ -116,7 +116,8 @@ export default function ProfilePage() {
 
       {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}
 
-      <MadeCards cards={madePages}/>
+      {/* <MadeCards cards={madePages}/> */}
+      <Cards cards={madePages}/>
 
       {isAuthenticated ? 
       <div className="profileMakePageButtonContainer">

@@ -15,16 +15,15 @@ h1, h2, h3, h4, h5 {
     color:#35FF69;
 }
 
-/* h1, h2, h3, p {
-    color:#35FF69
-} */
 
 /*Navbar*/
-.nav-container {
-    background-color: #2C1A1D;
-    /* This fixed upper space */
-    /* display: grid; 
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr; */
+
+.navContainer{
+    background-color: #2C1A1D;    
+    border-bottom: #35FF69 solid 2px;
+}
+
+.navItems {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     /* justify-content: space-around; */
@@ -32,7 +31,8 @@ h1, h2, h3, h4, h5 {
     align-items: center;  */
     padding: 10px;
     align-items: center;
-    border-bottom: #35FF69 solid 2px;
+    max-width: 1000px;
+    margin:0 auto;
 }
 
 .logoContainer {

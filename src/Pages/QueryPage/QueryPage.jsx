@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
-import MadeCards from "../ProfilePage/MadeCards";   //Make this a shared component
+import Cards from "../../SharedComponents/Cards";
 
 export default function QueryPage() {
 
@@ -35,7 +35,8 @@ export default function QueryPage() {
             <p>Results For: {query}</p>
 
             {pages && (
-                <MadeCards cards={pages}/>
+                // <MadeCards cards={pages}/>
+                <Cards cards={pages}/>
             )}
         </div>
     );

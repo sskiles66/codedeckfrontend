@@ -35,40 +35,43 @@ export default function Navbar() {
   }
 
   return (
-    <div className="nav-container">
-      <div className="logoContainer">
-        <Link to="/" type="button"><img className="logo" src="/logo2.jpg" /></Link>
-      </div>
-      <form className="searchbarContainer" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search data..."
-          className="searchbar"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button type="submit">Search</button>
-      </form> 
-      <p className="stats">Stats</p>
-      <div className="profile">
-        <button className="profileButton" onClick={() => setProfileToggle(!profileToggle)}>
-          <CgProfile className="profileIcon"/>
-        </button>
-        {profileToggle ? (
-          <div className="navDropDown">
-            {isAuthenticated ? (
-              <>
-                <button><Link to="/profilePage" type="button">See Profile</Link></button>
-                <button onClick={() => logout()}>Logout</button>
-              </> 
-            ) : (
-              <button onClick={() => handleLogin()}>Log in</button>
-            )}
-          </div>
-        ) : (
-          ""
-        )}
+    <div className="navContainer">
+      <div className="navItems">
+        <div className="logoContainer">
+          <Link to="/" type="button"><img className="logo" src="/logo2.jpg" /></Link>
+        </div>
+        <form className="searchbarContainer" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search data..."
+            className="searchbar"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
+        <p className="stats">Stats</p>
+        <div className="profile">
+          <button className="profileButton" onClick={() => setProfileToggle(!profileToggle)}>
+            <CgProfile className="profileIcon" />
+          </button>
+          {profileToggle ? (
+            <div className="navDropDown">
+              {isAuthenticated ? (
+                <>
+                  <button><Link to="/profilePage" type="button">See Profile</Link></button>
+                  <button onClick={() => logout()}>Logout</button>
+                </>
+              ) : (
+                <button onClick={() => handleLogin()}>Log in</button>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
+
   );
 }
