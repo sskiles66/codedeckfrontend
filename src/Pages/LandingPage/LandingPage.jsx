@@ -32,11 +32,13 @@ export default function LandingPage() {
   return (
     <div className="hero">
         <Hero />
-        <Cards cards={mostRecentCards}/>
+        <h2>Made Cards</h2>
         <hr></hr>
+        <Cards cards={mostRecentCards}/>
+        {/* <hr></hr> */}
         {/* <MostRecent /> */}
-        <MostPop />
-        <Languages />
+        {/* <MostPop /> */}
+        {/* <Languages /> */}
     </div>
   );
 }

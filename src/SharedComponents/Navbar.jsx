@@ -50,7 +50,7 @@ export default function Navbar() {
           />
           <button type="submit">Search</button>
         </form>
-        <p className="stats">Stats</p>
+        {/* <p className="stats">Stats</p> */}
         <div className="profile">
           <button className="profileButton" onClick={() => setProfileToggle(!profileToggle)}>
             <CgProfile className="profileIcon" />
