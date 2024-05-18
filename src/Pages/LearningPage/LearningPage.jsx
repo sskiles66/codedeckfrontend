@@ -54,32 +54,34 @@ export default function LearningPage() {
     <div className="learningPageContainer">
       {pageData ? (
         <>
-          <h1>{pageData.name}</h1>
 
-          {/* COme back to this once game is good to go */}
-          {/* <LeaderBoard /> */}  
+          <div className="summaryContainer">
+            <h1>{pageData.name}</h1>
 
-          <div className="summary">
-            <h2>Summary</h2>
-            <p>{pageData.summary}</p>
+            {/* COme back to this once game is good to go */}
+            {/* <LeaderBoard /> */}
+
+            <p className="summary">{pageData.summary}</p>
+            
+            {role === "creator" && (
+              <>
+                <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
+                {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} />}
+              </>
+            )}
           </div>
 
-          {role === "creator" && (
-            <>
-              <button onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
-              {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} />}
-            </>
-          )}
+          <div className="accordionContainer">
+            <Accordion subs={pageData.sub_topics} />
 
-          <Accordion subs={pageData.sub_topics}/>
-
-          {role === "creator" && (
-            <>
-              <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
-              {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch}/>}
-            </>
-          )}
-
+            {role === "creator" && (
+              <>
+                <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
+                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} />}
+              </>
+            )}
+          </div>
+         
         </>
       ) : (
         ""

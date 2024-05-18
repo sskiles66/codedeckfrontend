@@ -2,7 +2,7 @@
 
 
 body {
-    background-color: black;
+    background-color: #171716;
 }
 
 p, a {
@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5 {
     background-color: #f5f5f5; /* Light gray background */
     border-radius: 5px; /* Rounded corners */
     cursor: pointer;
+    margin-left: 3px;
 }
 
 .stats {
@@ -233,6 +234,21 @@ h1, h2, h3, h4, h5 {
     text-align: center;
 }
 
+.summaryContainer{
+    background-color: #2C1A1D;
+    padding: 10px;
+    margin: 50px 0 50px 0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.summaryEditButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 .learningPageContainer button {
     background-color: #2C1A1D;
     color:#35FF69;
@@ -310,10 +326,16 @@ table {
     border: 1px solid #007bff;
   }
 
-
+.accordionContainer {
+    background-color: #2C1A1D;
+    padding: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 50px;
+}
 
 .learnAccordionItem{
-    margin: 10px 20px;
+    margin: 30px 20px;
     border: solid #35FF69 3px;
 }
 

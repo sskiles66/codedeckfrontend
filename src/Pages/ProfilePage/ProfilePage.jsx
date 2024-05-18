@@ -94,8 +94,8 @@ export default function ProfilePage() {
 
   return (
     <div className="profilePageContainer">
-      <h1>Profile Page</h1>
-      {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""}
+      {/* <h1>Profile Page</h1>
+      {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""} */}
 
       {user ? <h1>{user.name}</h1> : ""}
 
@@ -117,6 +117,7 @@ export default function ProfilePage() {
       {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}
 
       {/* <MadeCards cards={madePages}/> */}
+      <h2>Your Created Pages</h2>
       <Cards cards={madePages}/>
 
       {isAuthenticated ? 
