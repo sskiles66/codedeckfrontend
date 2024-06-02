@@ -1,38 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kode+Mono:wght@400..700&display=swap');
 
 
+/* Make standard max-width architecture
+
+Make set color scheme rule */
+
+:root {
+    --primary-color: blue;
+    /* Example Usage */
+    /* background-color: var(--primary-color) */
+    --font-size: 16px;
+}
+
 body {
     background-color: #171716;
 }
 
-p, a {
+p,
+a {
     font-family: "Inter", sans-serif;
-    color:#35FF69;
+    color: #35FF69;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: "Kode Mono", monospace;
-    color:#35FF69;
+    color: #35FF69;
 }
 
 
 /*Navbar*/
 
-.navContainer{
-    background-color: #2C1A1D;    
+.navContainer {
+    background-color: #2C1A1D;
     border-bottom: #35FF69 solid 2px;
 }
 
 .navItems {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    /* justify-content: space-around; */
-    /* justify-items: center; 
-    align-items: center;  */
     padding: 10px;
     align-items: center;
     max-width: 1400px;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
 .logoContainer {
@@ -42,7 +55,6 @@ h1, h2, h3, h4, h5 {
 
 .logo {
     width: 75px;
-    /* grid-column: 1/2; */
 }
 
 .searchbarContainer {
@@ -54,73 +66,77 @@ h1, h2, h3, h4, h5 {
 .searchbar {
     width: 70%;
     height: 50%;
-    background-color: #f5f5f5; /* Light gray background */
-    border: 1px solid #ccc; /* Gray border */
-    padding: 10px; /* Add some padding for spacing */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
-    font-family: Arial, sans-serif; /* Font family */
-    font-size: 14px; /* Font size */
-    color: #333; /* Text color */
+    background-color: #f5f5f5;
+    /* Light gray background */
+    border: 1px solid #ccc;
+    /* Gray border */
+    padding: 10px;
+    /* Add some padding for spacing */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Light shadow */
+    font-family: Arial, sans-serif;
+    /* Font family */
+    font-size: 14px;
+    /* Font size */
+    color: #333;
+    /* Text color */
 }
 
 .searchbarContainer button {
     padding: 10px;
-    background-color: #f5f5f5; /* Light gray background */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #f5f5f5;
+    /* Light gray background */
+    border-radius: 5px;
+    /* Rounded corners */
     cursor: pointer;
     margin-left: 3px;
 }
 
 .stats {
-    /* grid-column: 5/6; */
     color: #35FF69;
     grid-column: 4/5;
     margin: 0 auto;
-    
+
 }
 
 .profile {
     grid-column: 5/6;
-    /* width: 100px; */
-    /* font-size: 200%; */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    
+
 }
 
 .profileButton {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
+
 }
 
 .profileIcon {
-    color:#35FF69;
+    color: #35FF69;
     font-size: 30px;
 }
 
 .navDropDown {
     position: absolute;
-    
-    top: 100%; /* Position the dropdown below the button */
-
-    /* left: 50%;  */
-    /* Position at the center horizontally */
-    /* transform: translateX(-50%);  */
-    /* Offset to align with profile icon */
-
-    background-color: white; /* Set background color (optional) */
-    border: 1px solid lightgray; /* Add a border (optional) */
-    padding: 5px; /* Add some padding (optional) */
+    top: 100%;
+    /* Position the dropdown below the button */
+    background-color: white;
+    /* Set background color (optional) */
+    border: 1px solid lightgray;
+    /* Add a border (optional) */
+    padding: 5px;
+    /* Add some padding (optional) */
     width: 100px;
     z-index: 1;
 }
 
-.navDropDown >* {
+.navDropDown>* {
     padding: 5px;
     margin: 5px;
 }
@@ -132,12 +148,12 @@ h1, h2, h3, h4, h5 {
 
 /*Hero*/
 
-.hero-container{
+.hero-container {
     margin: 0 0;
 }
 
 .hero img {
-    
+
     width: 100%;
     height: 300px;
 }
@@ -156,48 +172,49 @@ h1, h2, h3, h4, h5 {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center horizontally */
 }
 
 /* Has to be absolute as well as other styles don't work */
 .heroTitle {
-    color:#35FF69;
+    color: #35FF69;
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    transform: translateX(-50%);
+    /* Center horizontally */
     background-color: rgba(44, 26, 29, 0.7);
     border-radius: 10px;
     width: 100%;
 
 }
 
-.heroSearch{
-    background-color: #f5f5f5; /* Light gray background */
-    border: 1px solid #ccc; /* Gray border */
-    padding: 10px; /* Add some padding for spacing */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
-    font-family: Arial, sans-serif; /* Font family */
-    font-size: 14px; /* Font size */
-    color: #333; /* Text color */
+.heroSearch {
+    background-color: #f5f5f5;
+    /* Light gray background */
+    border: 1px solid #ccc;
+    /* Gray border */
+    padding: 10px;
+    /* Add some padding for spacing */
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Light shadow */
+    font-family: Arial, sans-serif;
+    /* Font family */
+    font-size: 14px;
+    /* Font size */
+    color: #333;
+    /* Text color */
 }
 
 /*Landing Page Cards*/
 
-.mrmpContainer {
-    max-width: 1000px;
-    margin: 50px auto;
-    text-align: left;
-    border: 3px solid #35FF69;
-    margin-bottom: 5px;
-    padding: 10px;
-}
-
 .cardContainer {
     margin-top: 100px;
     display: flex;
-    justify-content: space-around;    
+    justify-content: space-around;
     /* flex-wrap: wrap; */
     margin: 0 auto;
     max-width: 1000px;
@@ -209,33 +226,35 @@ h1, h2, h3, h4, h5 {
     padding: 10px;
     margin: 10px;
     background-color: #2C1A1D;
-    color:#35FF69;
+    color: #35FF69;
     width: 250px;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
     border: 2px solid gray;
-    
+
 }
 
 /* For temporary soltion to line clamping */
 .card p {
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Clip overflowing content */
-    text-overflow: ellipsis; /* Show ellipsis (...) */
+    white-space: nowrap;
+    /* Prevent wrapping */
+    overflow: hidden;
+    /* Clip overflowing content */
+    text-overflow: ellipsis;
+    /* Show ellipsis (...) */
 }
 
 
 /*Learning Page styles*/
 
 
-.learningPageContainer{
+.learningPageContainer {
     max-width: 1000px;
-    /* background-color: #333; */
     margin: 0 auto;
     text-align: center;
 }
 
-.summaryContainer{
+.summaryContainer {
     background-color: #2C1A1D;
     padding: 10px;
     margin: 50px 0 50px 0;
@@ -253,32 +272,32 @@ h1, h2, h3, h4, h5 {
 
 .learningPageContainer button {
     background-color: #2C1A1D;
-    color:#35FF69;
+    color: #35FF69;
     padding: 10px;
 }
 
 .learningPageContainer hr {
-    border-color:#35FF69;
+    border-color: #35FF69;
 }
 
 table {
     margin: 0 auto;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  th,
-  td {
+}
+
+th,
+td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-  }
-  
-  th {
+}
+
+th {
     background-color: #f2f2f2;
     color: #333;
     font-weight: bold;
-  }
+}
 
 /* .leaderboard, .summary, .accordion{
     border: solid black 3px;
@@ -294,39 +313,40 @@ table {
     border: 1px solid #35FF69;
     border-radius: 5px;
     margin: 50px 50px;
-  }
-  
-  .lpEditForm label {
+}
+
+.lpEditForm label {
     display: inline-block;
     width: 120px;
     text-align: left;
     color: #35FF69;
-  }
-  
-  .lpEditForm input[type="text"] {
+}
+
+.lpEditForm input[type="text"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #35FF69;
     border-radius: 3px;
-  }
-  
-  .lpEditForm button[type="submit"] {
-    background-color: #4CAF50; /* Green */
+}
+
+.lpEditForm button[type="submit"] {
+    background-color: #4CAF50;
+    /* Green */
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  /* Optional hover effects */
-  .lpEditForm button[type="submit"]:hover {
+}
+
+/* Optional hover effects */
+.lpEditForm button[type="submit"]:hover {
     background-color: #45A049;
-  }
-  
-  .lpEditForm input[type="text"]:focus {
+}
+
+.lpEditForm input[type="text"]:focus {
     border: 1px solid #007bff;
-  }
+}
 
 .accordionContainer {
     background-color: #2C1A1D;
@@ -337,7 +357,7 @@ table {
     border: 2px solid gray;
 }
 
-.learnAccordionItem{
+.learnAccordionItem {
     margin: 30px 20px;
     border: solid #35FF69 3px;
     border-radius: 10px;
@@ -356,30 +376,30 @@ table {
     right: 20px;
 }
 
-.learnAccordionGrid{
+.learnAccordionGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: left;
     margin: 20px;
-    
+
 }
 
-.learnAccordionAnalogy{
+.learnAccordionAnalogy {
     grid-column: 1/2;
     grid-row: 1/2;
 }
 
-.learnAccordionMnemonics{
+.learnAccordionMnemonics {
     grid-column: 1/2;
     grid-row: 2/3;
 }
 
-.learnAccordionImage{
+.learnAccordionImage {
     grid-column: 2/3;
     grid-row: 1/3;
 }
 
-.learnAccordionImage img{
+.learnAccordionImage img {
     max-width: 100%;
 }
 
@@ -387,39 +407,35 @@ table {
 /*Profile page styles*/
 
 
-.profilePageContainer{
+.profilePageContainer {
     max-width: 1000px;
     margin: 0 auto;
 
 }
 
-.profileDataContainer{
+.profileDataContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
     margin: 75px 0;
-    
+
     background-color: #2C1A1D;
-    /* padding: 20px 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
-    /* margin-bottom: 50px; */
     border: 2px solid gray;
 }
 
-.profileDataDataContainer{
+.profileDataDataContainer {
     background-color: black;
-    /* padding: 20px 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
     padding: 10px 30px;
     margin: 10px;
-    /* margin-bottom: 50px; */
     border: 2px solid gray;
 }
 
-.profileDataImageContainer img{
+.profileDataImageContainer img {
     width: 150px;
     border-radius: 20px;
     border: 2px solid gray;
@@ -427,12 +443,12 @@ table {
 
 }
 
-.profileMakePageButtonContainer{
+.profileMakePageButtonContainer {
     margin: 50px auto;
     width: 200px;
 }
 
-.profileMakePageButton{
+.profileMakePageButton {
     background-color: #2C1A1D;
     color: #35FF69;
     width: 200px;
@@ -443,7 +459,7 @@ table {
 
 
 /* Query Page Styles*/
-.queryPageContainer{
+.queryPageContainer {
     max-width: 1000px;
     margin: 0 auto;
     margin-top: 20px;
