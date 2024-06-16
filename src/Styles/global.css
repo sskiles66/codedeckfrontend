@@ -168,18 +168,27 @@ h5 {
     /* Center horizontally */
 }
 
+.heroContentContainer {
+    position: absolute;
+    background-color: rgba(44, 26, 29, 0.6);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 /* Has to be absolute as well as other styles don't work */
 .heroTitle {
     color: var(--main-font-color);
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translateX(-50%);
-    /* Center horizontally */
-    background-color: rgba(44, 26, 29, 0.7);
-    border-radius: 10px;
-    width: 100%;
+    font-size: 250%;
+}
 
+.heroDesc {
+    font-size: 120%;
+    text-align: left;
 }
 
 .heroSearch {
@@ -204,7 +213,7 @@ h5 {
     max-width: var(--tier-two-width);
     overflow-x: scroll;
     scrollbar-width: thin; /* Set scrollbar width to 'thin' or 'auto' */
-    scrollbar-color: red orange; /* Set track and thumb colors */
+    scrollbar-color: var(--main-font-color) var(--card-color); /* Set track and thumb colors */
 }
 
 .card {
