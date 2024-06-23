@@ -89,3 +89,42 @@ export default function LearningPage() {
     </div>
   );
 }
+
+
+// {isLoading ? (
+//   // Display loading indicator while data is fetching
+//   <div className="loading">Loading...</div>
+// ) : pageData ? (
+//   <>
+//     {/* Your existing content goes here */}
+//     <div className="summaryContainer">
+//       <h1>{pageData.name}</h1>
+
+//       {/* COme back to this once game is good to go */}
+//       {/* <LeaderBoard /> */}
+
+//       <p className="summary">{pageData.summary}</p>
+
+//       {role === "creator" && (
+//         <>
+//           <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
+//           {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} />}
+//         </>
+//       )}
+//     </div>
+
+//     <div className="accordionContainer">
+//       <Accordion subs={pageData.sub_topics} />
+
+//       {role === "creator" && (
+//         <>
+//           <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
+//           {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} />}
+//         </>
+//       )}
+//     </div>
+//   </>
+// ) : (
+//   // Display message when no data is available
+//   <div className="no-data">No data found.</div>
+// )}

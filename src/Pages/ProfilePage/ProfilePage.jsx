@@ -117,8 +117,7 @@ export default function ProfilePage() {
       {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}
 
       {/* <MadeCards cards={madePages}/> */}
-      <h2>Your Created Pages</h2>
-      <Cards cards={madePages}/>
+      <Cards cards={madePages} title="Your Created Pages"/>
 
       {isAuthenticated ? 
       <div className="profileMakePageButtonContainer">

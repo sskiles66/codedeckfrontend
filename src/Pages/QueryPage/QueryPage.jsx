@@ -31,12 +31,8 @@ export default function QueryPage() {
 
     return (
         <div className="queryPageContainer">
-            <p>Query Page</p>
-            <p>Results For: {query}</p>
-
             {pages && (
-                // <MadeCards cards={pages}/>
-                <Cards cards={pages}/>
+                <Cards cards={pages} title={`Results For: ${query}`}/>
             )}
         </div>
     );

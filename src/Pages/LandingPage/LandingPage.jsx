@@ -32,9 +32,7 @@ export default function LandingPage() {
   return (
     <div className="hero">
         <Hero />
-        <h2>Made Cards</h2>
-        <hr></hr>
-        <Cards cards={mostRecentCards}/>
+        <Cards cards={mostRecentCards} title="Made Cards"/>
         {/* <hr></hr> */}
         {/* <MostRecent /> */}
         {/* <MostPop /> */}
