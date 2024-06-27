@@ -15,7 +15,7 @@ export default function Cards(props) {
           <Link to={`/learningPage/${item._id}`} key={item._id} style={{ textDecoration: 'none' }}>
             <div className="card" key={index}>
               <h1>{item.name}</h1>
-              <hr></hr>
+              {/* <hr></hr> */}
               <p>{item.summary}</p>
             </div>
           </Link>
