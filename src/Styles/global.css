@@ -5,8 +5,8 @@
     --body-color: #09090B;
     --card-color: #1B1917;
     --title-font-color: #F2F2F2;
-    --para-font-color: #A1A1A9;
-    --dark-font-color: #333;
+    --para-font-color: #D5D5D8;
+    --dark-font-color: #09090B;
     --border-color: #A1A1A9;
     --light-main-color: #f5f5f5;
     --font-size: 16px;
@@ -144,9 +144,10 @@ hr {
 .hero-container {
     margin: 0 0;
     background: rgb(23,23,22);
-    background: linear-gradient(0deg, rgba(23,23,22,1) 0%, rgba(53,255,105,1) 50%, rgba(23,23,22,1) 100%);
+    background: linear-gradient(0deg, rgba(9, 9, 11, 1) 0%, rgba(108, 194, 106, 1) 50%, rgba(9, 9, 11, 1) 100%);
     height: 500px;
     position: relative;
+    color: var(--dark-font-color)
 }
 
 .hero img {
@@ -175,7 +176,7 @@ hr {
 
 .heroContentContainer {
     position: absolute;
-    background-color: rgba(44, 26, 29, 0.8);
+    /* background-color: rgba(44, 26, 29, 0.8); */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -185,15 +186,16 @@ hr {
     align-items: center;
 }
 
-/* Has to be absolute as well as other styles don't work */
-.heroTitle {
-    color: var(--para-font-color);
-    font-size: 250%;
+.heroContentContainer h1 {
+    color:var(--dark-font-color);
+    font-size: 600%;
 }
 
-.heroDesc {
+.heroContentContainer p {
+    color:var(--dark-font-color);
     font-size: 120%;
     text-align: left;
+    font-weight: bolder;
 }
 
 .heroSearch {
@@ -276,6 +278,10 @@ hr {
     background-color: var(--accent-color);
     color: var(--dark-font-color);
     padding: 10px;
+    font-family: "Kode Mono", monospace;
+    font-weight: bolder;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 table {
@@ -303,31 +309,49 @@ th {
 } */
 
 /* Basic styling */
-.lpEditForm form {
+.lpEditModalContainer {
+    position: fixed; /* Make the modal fixed-positioned */
+    top: 0; /* Set top to 0 to cover the entire viewport */
+    left: 0; /* Set left to 0 to cover the entire viewport */
+    width: 100%; /* Set width to 100% for full-viewport coverage */
+    height: 100%; /* Set height to 100% for full-viewport coverage */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 1;
+}
+
+.lpEditModal {
+    background-color: var(--card-color);
+    position: absolute; /* Make the modal absolutely positioned inside the container */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the modal */
+}
+.lpEditModal form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    margin: 50px 50px;
+    margin: 70px 50px 50px 50px;
+    width: 600px;
 }
 
-.lpEditForm label {
+.lpEditModal form label {
     display: inline-block;
     width: 120px;
     text-align: left;
     color: var(--para-font-color);
 }
 
-.lpEditForm input[type="text"] {
-    width: 100%;
+.lpEditModal form input[type="text"] {
+    width: 97%;
     padding: 5px;
     border: 1px solid var(--para-font-color);
     border-radius: 3px;
 }
 
-.lpEditForm button[type="submit"] {
+.lpEditModal form button[type="submit"] {
     background-color: #4CAF50;
     /* Green */
     color: white;
@@ -337,12 +361,18 @@ th {
     cursor: pointer;
 }
 
+#closeModalButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 /* Optional hover effects */
-.lpEditForm button[type="submit"]:hover {
+.lpEditModal form button[type="submit"]:hover {
     background-color: #45A049;
 }
 
-.lpEditForm input[type="text"]:focus {
+.lpEditModal form input[type="text"]:focus {
     border: 1px solid #007bff;
 }
 
@@ -387,7 +417,7 @@ th {
 
 .learnAccordionGrid > * {
     /* background-color: #40262A; */
-    border: solid 2px #007bff;
+    border: solid 1px var(--accent-color);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
     padding: 10px;
     border-radius: 10px;
@@ -457,12 +487,14 @@ th {
 }
 
 .profileMakePageButton {
-    background-color: var(--card-color);
-    color: var(--border-color);
     width: 200px;
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
+    background-color: var(--accent-color);
+    color: var(--dark-font-color);
+    font-family: "Kode Mono", monospace;
+    font-weight: bolder;
 }
 
 

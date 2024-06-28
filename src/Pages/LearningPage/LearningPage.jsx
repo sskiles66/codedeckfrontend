@@ -66,7 +66,7 @@ export default function LearningPage() {
             {role === "creator" && (
               <>
                 <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
-                {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} />}
+                {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} toggle={setShowMainEdit} />}
               </>
             )}
           </div>
@@ -77,7 +77,7 @@ export default function LearningPage() {
             {role === "creator" && (
               <>
                 <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
-                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} />}
+                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit}/>}
               </>
             )}
           </div>
