@@ -331,7 +331,7 @@ th {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--accent-color);
     border-radius: 5px;
     margin: 70px 50px 50px 50px;
     width: 600px;
@@ -341,7 +341,8 @@ th {
     display: inline-block;
     width: 120px;
     text-align: left;
-    color: var(--para-font-color);
+    color: var(--title-font-color);
+    font-family: "Kode Mono", monospace;
 }
 
 .lpEditModal form input[type="text"] {
@@ -349,6 +350,8 @@ th {
     padding: 5px;
     border: 1px solid var(--para-font-color);
     border-radius: 3px;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 20px;
 }
 
 .lpEditModal form button[type="submit"] {
@@ -503,4 +506,16 @@ th {
     max-width: var(--tier-two-width);
     margin: 0 auto;
     margin-top: 20px;
+}
+
+
+/* Mobile view*/
+
+@media screen and (max-width: 680px) {
+    .heroContentContainer {
+        display: block;
+    }
+    .heroContentContainer h1 {
+        font-size: 300%;
+    }
 }

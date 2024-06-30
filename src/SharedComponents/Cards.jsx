@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function Cards(props) {
 
-  console.log(props);
+  // console.log(props);
 
   return (
     <div className="cardSectionContainer">
