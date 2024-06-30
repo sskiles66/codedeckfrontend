@@ -1,5 +1,4 @@
-
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -8,94 +7,62 @@ import Cards from "../../SharedComponents/Cards";
 export default function ProfilePage() {
 
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-
   const [madePages, setMadePages] = useState([]);
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   async function test(){
-  //     const accessToken = await getAccessTokenSilently();
-  //     const response = await axios.get("http://localhost:4000/test", {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //         // Add any other custom headers here if needed
-  //       },
-  //     });
-    
-  //     console.log('Response:', response.data);
-
-  //   }
-
-  //   if (user && isAuthenticated){
-  //     test();
-  //   }
-
-  // }, []);
-
+  // Gets pages that user has made
   useEffect(() => {
-    async function getPagesForUser(){
+    async function getPagesForUser() {
       const accessToken = await getAccessTokenSilently();
-
-
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-by-user/${user.sub}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           // Add any other custom headers here if needed
         },
       });
-    
-      console.log('Response:', response.data);
-
+      // console.log('Response:', response.data);
       setMadePages(response.data);
-
     }
 
-    if (user && isAuthenticated){
+    if (user && isAuthenticated) {
       getPagesForUser();
     }
 
   }, [user, isAuthenticated]); //Dependicies are so that even if the page is refreshed, this effect hook still runs
 
-  async function handlePageCreation(e){
+  // Posts new page and navigates to it
+  async function handlePageCreation(e) {
     e.preventDefault();
     try {
       const accessToken = await getAccessTokenSilently();
       const createUserResponse = await axios.post(
-          'http://localhost:4000/api/learningPage/create',
-          {
-              name: "Title", 
-              image: "image goes here", 
-              summary: "Summary goes here", 
-              sub_topics: [], 
-              creator: user.sub, 
-              
+        'http://localhost:4000/api/learningPage/create',
+        {
+          name: "Title",
+          image: "image goes here",
+          summary: "Summary goes here",
+          sub_topics: [],
+          creator: user.sub,
+
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            // Add any other custom headers here if needed
           },
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              // Add any other custom headers here if needed
-            },
-          }
+        }
       );
 
-      console.log('User data saved:', createUserResponse.data);
+      // console.log('User data saved:', createUserResponse.data);
       navigate(`/learningPage/${createUserResponse.data._id}`);
     } catch (error) {
-        console.error('Error saving user data:', error);
+      console.error('Error saving user data:', error);
     }
-  }
-
-  // console.log(user.picture)
-
-  if(user){
-    console.log(user.picture)
   }
 
   return (
     <div className="profilePageContainer">
-      {/* <h1>Profile Page</h1>
-      {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""} */}
+      {/* {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""} */}
 
       {user ? <h1>{user.name}</h1> : ""}
 
@@ -114,16 +81,13 @@ export default function ProfilePage() {
         </div>
         : ""}
 
-      {/* {isAuthenticated ? <button onClick={handleAccountSave}>Save Account</button> : ""} */}
+      <Cards cards={madePages} title="Your Created Pages" />
 
-      {/* <MadeCards cards={madePages}/> */}
-      <Cards cards={madePages} title="Your Created Pages"/>
-
-      {isAuthenticated ? 
-      <div className="profileMakePageButtonContainer">
-        <button className="profileMakePageButton" onClick={handlePageCreation}>Make a page</button>
-      </div>
-      : ""}
+      {isAuthenticated ?
+        <div className="profileMakePageButtonContainer">
+          <button className="profileMakePageButton" onClick={handlePageCreation}>Make a page</button>
+        </div>
+        : ""}
 
     </div>
   );

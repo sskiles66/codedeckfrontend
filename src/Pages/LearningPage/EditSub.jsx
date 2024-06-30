@@ -3,27 +3,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 
-// import "../../Styles/styles.css"
-
-
 export default function EditSub(props) {
 
     const { reFetch, onReFetch, toggle } = props;
-
     const { getAccessTokenSilently } = useAuth0();
-
     const [editSubName, setEditSubName] = useState("");
-
     const [editDefinition, setEditDefinition] = useState("");
-
     const [editAnalogy, setEditAnalogy] = useState("");
-
     const [editMnemonics, setEditMnemonics] = useState("");
-
     const [editImage2, setEditImage2] = useState();
-
     const [editAudio, setEditAudio] = useState("");
-
     const { id } = useParams();
 
     function handleSubNameChange(e) {
@@ -44,7 +33,6 @@ export default function EditSub(props) {
 
     const handleImage2Change = (event) => {
         const file = event.target.files[0];
-
         if (file) {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -59,14 +47,14 @@ export default function EditSub(props) {
         }
     };
 
-    console.log(editImage2)
+    // console.log(editImage2)
+
     function handleAudioChange(e) {
         setEditAudio(e.target.value)
     }
 
     async function handleSubSubmit(e) {
         e.preventDefault();
-
         try {
             const accessToken = await getAccessTokenSilently();
             const response = await axios.patch("http://localhost:4000/api/learningPage/new-subtopic", {
@@ -85,7 +73,7 @@ export default function EditSub(props) {
                     },
                 });
 
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
             onReFetch(!reFetch);
             toggle(false);
         } catch (error) {

@@ -1,32 +1,19 @@
-
-import React, {useState, useEffect} from "react";
-
+import React, {useState} from "react";
 import "../Styles/global.css"
-
 import { CgProfile } from "react-icons/cg";
-
 import { useAuth0 } from "@auth0/auth0-react";
-
 import { Link, useNavigate } from "react-router-dom";
-
-import axios from "axios";
-
 
 
 export default function Navbar() {
 
-
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
-
   const [profileToggle, setProfileToggle] = useState(false);
-
   const [searchTerm, setSearchTerm] = useState("");
-
   const navigate = useNavigate();
 
   async function handleLogin(){
     await loginWithRedirect();
-    
   }  
 
   function handleSubmit(e){
@@ -37,9 +24,11 @@ export default function Navbar() {
   return (
     <div className="navContainer">
       <div className="navItems">
+        {/* Logo */}
         <div className="logoContainer">
           <Link to="/" type="button"><img className="logo" src="/logo2.jpg" /></Link>
         </div>
+        {/* Searchbar */}
         <form className="searchbarContainer" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -51,10 +40,12 @@ export default function Navbar() {
           <button type="submit">Search</button>
         </form>
         {/* <p className="stats">Stats</p> */}
+        {/* Profile */}
         <div className="profile">
           <button className="profileButton" onClick={() => setProfileToggle(!profileToggle)}>
             <CgProfile className="profileIcon" />
           </button>
+          {/* Dropdown */}
           {profileToggle ? (
             <div className="navDropDown">
               {isAuthenticated ? (
@@ -72,6 +63,5 @@ export default function Navbar() {
         </div>
       </div>
     </div>
-
   );
 }

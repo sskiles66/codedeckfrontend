@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import Hero from "./Hero";
-import MostRecent from "./MostRecent";
-import MostPop from "./MostPop";
-import Languages from "./Languages";
+// import MostRecent from "./MostRecent";
+// import MostPop from "./MostPop";
+// import Languages from "./Languages";
 import "../../Styles/LandingPage.css"
 import Cards from "../../SharedComponents/Cards";
 import axios from "axios";
@@ -14,11 +13,8 @@ export default function LandingPage() {
 
   useEffect(() => {
     async function getPagesMostRecent() {
-
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-most-recent`);
-
       // console.log('Response:', response.data);
-
       setMostRecentCards(response.data);
     }
 

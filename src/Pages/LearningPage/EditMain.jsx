@@ -3,23 +3,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 
-// import "../../Styles/styles.css"
-
-
-
-
 export default function EditMain(props) {
 
     const { reFetch, onReFetch, toggle } = props;
-
     const { getAccessTokenSilently } = useAuth0();
-
     const [editName, setEditName] = useState("");
-
     const [editImage, setEditImage] = useState("");
-
     const [editSummary, setEditSummary] = useState("");
-
     const { id } = useParams();
 
     function handleNameChange(e) {
@@ -34,11 +24,8 @@ export default function EditMain(props) {
         setEditSummary(e.target.value)
     }
 
-
     async function handleEditSubmit(e) {
         e.preventDefault();
-
-
         try {
             const accessToken = await getAccessTokenSilently();
             const response = await axios.patch("http://localhost:4000/api/learningPage/edit-page", {

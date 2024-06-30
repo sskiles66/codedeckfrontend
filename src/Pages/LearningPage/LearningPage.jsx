@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import LeaderBoard from "./LeaderBoard";
@@ -10,43 +10,39 @@ import EditSub from "./EditSub";
 export default function LearningPage() {
 
   const { user, isAuthenticated } = useAuth0();
-
   const [pageData, setPageData] = useState();
-
   const [role, setRole] = useState();
-
   const { id } = useParams();
-
   const [reFetch, setReFetch] = useState(false);
-
   const [showMainEdit, setShowMainEdit] = useState(false);
-
   const [showSubEdit, setShowSubEdit] = useState(false);
 
+  // Get all page data
   useEffect(() => {
-    async function fetchPageData(){
+    async function fetchPageData() {
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-page/${id}`);
-      console.log('Response:', response.data);
+      // console.log('Response:', response.data);
       setPageData(response.data);
     }
 
     fetchPageData();
 
-  }, [reFetch]);
+  }, [reFetch]); // Refetch is for when editing, changes kinda happen in real time.
 
+  // Figures out if user is the creator or not
   useEffect(() => {
-    async function setTheRole(){
-     if (pageData.creator == user.sub){
-      setRole("creator");
-     }else{
-      setRole("visitor");
-     }
+    async function setTheRole() {
+      if (pageData.creator == user.sub) {
+        setRole("creator");
+      } else {
+        setRole("visitor");
+      }
     }
 
-    if (pageData && isAuthenticated ){
+    if (pageData && isAuthenticated) {
       setTheRole();
     }
-    
+
   }, [pageData, isAuthenticated]);
 
 
@@ -54,7 +50,6 @@ export default function LearningPage() {
     <div className="learningPageContainer">
       {pageData ? (
         <>
-
           <div className="summaryContainer">
             <h1>{pageData.name}</h1>
 
@@ -62,10 +57,13 @@ export default function LearningPage() {
             {/* <LeaderBoard /> */}
 
             <p className="summary">{pageData.summary}</p>
-            
+
+            {/* Editor privledges */}
             {role === "creator" && (
               <>
+                {/* Button */}
                 <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
+                {/* Modal */}
                 {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} toggle={setShowMainEdit} />}
               </>
             )}
@@ -74,14 +72,16 @@ export default function LearningPage() {
           <div className="accordionContainer">
             <Accordion subs={pageData.sub_topics} />
 
+            {/* Editor privledges */}
             {role === "creator" && (
               <>
+                {/* Button */}
                 <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
-                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit}/>}
+                {/* Modal */}
+                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit} />}
               </>
             )}
           </div>
-         
         </>
       ) : (
         ""

@@ -260,7 +260,7 @@ hr {
 
 .summaryContainer {
     background-color: var(--card-color);
-    padding: 10px;
+    padding: 50px 10px 50px 10px;
     margin: 50px 0 50px 0;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
@@ -400,11 +400,12 @@ th {
     text-align: left;
     margin-left: 20px;
     position: relative;
+    padding: 50px 0;
 }
 
 .learnAccordionItemHeaderExpand {
     position: absolute;
-    top: 0;
+    top: 20px;
     right: 20px;
 }
 
@@ -464,7 +465,7 @@ th {
     background-color: var(--card-color);
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
-    border: 1px solid var(--accent-color);
+    /* border: 1px solid var(--accent-color); */
 }
 
 .profileDataDataContainer {
@@ -517,5 +518,41 @@ th {
     }
     .heroContentContainer h1 {
         font-size: 300%;
+    }
+    .navItems {
+        grid-template-rows: 1fr 1fr;
+    }
+    .searchbarContainer {
+        grid-column: 1/6;
+        width: 100%;
+        grid-row: 2/3;
+        text-align: center;
+    }
+    .heroContentContainer p {
+        text-align: center;
+    }
+    .cardSectionContainer {
+        margin: 50px 10px;
+    }
+    .learnAccordionGrid {
+        display: block;
+    }
+    .learnAccordionGrid > * {
+        margin: 20px 0 ;
+    }
+    .lpEditModal {
+        padding: 70px 50px 50px 50px;
+    }
+    .lpEditModal form {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .profilePageContainer h1 {
+        margin-left: 10px;
+    }
+    .profileDataContainer {
+        display: block;
+        text-align: center;
+        padding: 10px;
     }
 }

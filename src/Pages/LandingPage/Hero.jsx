@@ -1,11 +1,8 @@
-
 import React from "react";
 
 export default function Hero() {
     return (
         <div className="hero-container">
-
-
             <div className="heroContentContainer">
                 <div className="heroTitle">
                     <h1>CodeDeck</h1>
@@ -16,7 +13,6 @@ export default function Hero() {
                     <p>Promotes friendly competition in classes.</p>
                 </div>
             </div>
-
         </div>
     );
 }
