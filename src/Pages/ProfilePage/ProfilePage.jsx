@@ -43,6 +43,7 @@ export default function ProfilePage() {
           summary: "Summary goes here",
           sub_topics: [],
           creator: user.sub,
+          isLocked: true
 
         },
         {

@@ -9,7 +9,7 @@ import EditSub from "./EditSub";
 
 export default function LearningPage() {
 
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [pageData, setPageData] = useState();
   const [role, setRole] = useState();
   const { id } = useParams();
@@ -21,7 +21,7 @@ export default function LearningPage() {
   useEffect(() => {
     async function fetchPageData() {
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-page/${id}`);
-      // console.log('Response:', response.data);
+      console.log('Response:', response.data);
       setPageData(response.data);
     }
 
@@ -45,43 +45,81 @@ export default function LearningPage() {
 
   }, [pageData, isAuthenticated]);
 
+  async function handleEditSubmit(e) {
+    e.preventDefault();
+    try {
+      const accessToken = await getAccessTokenSilently();
+      const response = await axios.patch("http://localhost:4000/api/learningPage/edit-lock", {
+        isLocked: pageData.isLocked,
+        page_id: id,
+      },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            // Add any other custom headers here if needed
+          },
+        });
+
+      // console.log('Response:', response.data);
+      // onReFetch(!reFetch);
+      // toggle(false);
+      console.log(pageData);
+      setPageData({ ...pageData, isLocked: !pageData.isLocked });
+    } catch (error) {
+      console.error('Error making PATCH request:', error);
+    }
+  }
+
 
   return (
     <div className="learningPageContainer">
+
       {pageData ? (
         <>
-          <div className="summaryContainer">
-            <h1>{pageData.name}</h1>
+        <p>{pageData.isLocked ? "Locked" : "Not locked"}</p>
+          {(role == "creator" || pageData.isLocked == false) && (
+            <>
+              {role == "creator" && (
+                <button onClick={handleEditSubmit}>{pageData.isLocked ? "Click To Unlock" : "Click To Lock"}</button>
+              )}
+              <div className="summaryContainer">
 
-            {/* COme back to this once game is good to go */}
-            {/* <LeaderBoard /> */}
+                <h1>{pageData.name}</h1>
 
-            <p className="summary">{pageData.summary}</p>
+                {/* COme back to this once game is good to go */}
+                {/* <LeaderBoard /> */}
 
-            {/* Editor privledges */}
-            {role === "creator" && (
-              <>
-                {/* Button */}
-                <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
-                {/* Modal */}
-                {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} toggle={setShowMainEdit} />}
-              </>
-            )}
-          </div>
+                <p className="summary">{pageData.summary}</p>
 
-          <div className="accordionContainer">
-            <Accordion subs={pageData.sub_topics} />
+                {/* Editor privledges */}
+                {role === "creator" && (
+                  <>
+                    {/* Button */}
+                    <button className="summaryEditButton" onClick={() => setShowMainEdit(!showMainEdit)}>Edit Main Info</button>
+                    {/* Modal */}
+                    {showMainEdit && <EditMain reFetch={reFetch} onReFetch={setReFetch} toggle={setShowMainEdit} />}
+                  </>
+                )}
+              </div>
 
-            {/* Editor privledges */}
-            {role === "creator" && (
-              <>
-                {/* Button */}
-                <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
-                {/* Modal */}
-                {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit} />}
-              </>
-            )}
-          </div>
+              <div className="accordionContainer">
+                <Accordion subs={pageData.sub_topics} />
+
+                {/* Editor privledges */}
+                {role === "creator" && (
+                  <>
+                    {/* Button */}
+                    <button onClick={() => setShowSubEdit(!showSubEdit)}>Add Sub Topic</button>
+                    {/* Modal */}
+                    {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit} />}
+                  </>
+                )}
+              </div>
+            </>
+          )}
+          {(pageData.isLocked && role != "creator") && (
+            <p>This page is locked</p>
+          )}
         </>
       ) : (
         ""
