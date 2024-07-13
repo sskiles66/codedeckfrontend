@@ -39,7 +39,6 @@ export default function ProfilePage() {
         'http://localhost:4000/api/learningPage/create',
         {
           name: "Title",
-          image: "image goes here",
           summary: "Summary goes here",
           sub_topics: [],
           creator: user.sub,

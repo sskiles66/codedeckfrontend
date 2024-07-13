@@ -12,7 +12,7 @@ export default function EditSub(props) {
     const [editAnalogy, setEditAnalogy] = useState("");
     const [editMnemonics, setEditMnemonics] = useState("");
     const [editImage2, setEditImage2] = useState();
-    const [editAudio, setEditAudio] = useState("");
+    // const [editAudio, setEditAudio] = useState("");
     const { id } = useParams();
 
     function handleSubNameChange(e) {
@@ -49,10 +49,6 @@ export default function EditSub(props) {
 
     // console.log(editImage2)
 
-    function handleAudioChange(e) {
-        setEditAudio(e.target.value)
-    }
-
     async function handleSubSubmit(e) {
         e.preventDefault();
         try {
@@ -63,7 +59,6 @@ export default function EditSub(props) {
                 analogy: editAnalogy,
                 mnemonics: editMnemonics,
                 image: editImage2,
-                audio: editAudio,
                 page_id: id
             },
                 {
@@ -107,9 +102,6 @@ export default function EditSub(props) {
                         onChange={handleImage2Change}
                         accept="image/*"
                     />
-
-                    <label for="audio">Audio:</label>
-                    <input value={editAudio} onChange={handleAudioChange} type="text" id="audio" name="audio"></input>
 
                     <button type="submit">Add Sub Topic</button>
                 </form>
