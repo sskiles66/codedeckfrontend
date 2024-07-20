@@ -5,13 +5,18 @@ import Hero from "./Hero";
 // import Languages from "./Languages";
 import "../../Styles/LandingPage.css"
 import Cards from "../../SharedComponents/Cards";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function LandingPage() {
 
   const [mostRecentCards, setMostRecentCards] = useState([]);
+  const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
 
   useEffect(() => {
+
     async function getPagesMostRecent() {
       const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-most-recent`);
       // console.log('Response:', response.data);
@@ -21,6 +26,30 @@ export default function LandingPage() {
     getPagesMostRecent();
 
   }, []);
+
+  useEffect(() => {
+
+    async function redirectToProfile() {
+      navigate(`/profilePage`);
+    }
+
+    async function clearRedirectKey() {
+      try {
+        localStorage.removeItem('redirect'); 
+      } catch (error) {
+        console.error('Error removing key from localStorage:', error);
+      }
+    }
+
+    if (isAuthenticated && localStorage.getItem('redirect') !== 'false'){
+      redirectToProfile();
+    }
+
+    if (!isAuthenticated && localStorage.getItem('redirect') === 'false'){
+      clearRedirectKey();
+    }
+
+  }, [isAuthenticated]);
 
   return (
     <div className="hero">

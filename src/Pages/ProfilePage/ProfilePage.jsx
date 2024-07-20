@@ -10,6 +10,18 @@ export default function ProfilePage() {
   const [madePages, setMadePages] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    
+    async function setRedirectKey() {
+      localStorage.setItem('redirect', 'false');
+    }
+
+    if (isAuthenticated && localStorage.getItem('redirect') !== 'false'){
+      setRedirectKey();
+    }
+
+  }, [isAuthenticated]);
+
   // Gets pages that user has made
   useEffect(() => {
     async function getPagesForUser() {
