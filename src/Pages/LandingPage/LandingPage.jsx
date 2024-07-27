@@ -41,10 +41,12 @@ export default function LandingPage() {
       }
     }
 
+    // IF user is logged in and a redirect key has not been set
     if (isAuthenticated && localStorage.getItem('redirect') !== 'false'){
       redirectToProfile();
     }
 
+    // if user is not logged in and they have a redirect key set (we want a key to be set only when they log in for the first time)
     if (!isAuthenticated && localStorage.getItem('redirect') === 'false'){
       clearRedirectKey();
     }
