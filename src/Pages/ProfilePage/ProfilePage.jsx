@@ -9,6 +9,7 @@ export default function ProfilePage() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [madePages, setMadePages] = useState([]);
   const [isCreationStepDoneOrPassed, setIsCreationStepDoneOrPassed] = useState(false);
+  const [userData, setUserData] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,12 +60,23 @@ export default function ProfilePage() {
 
   // Gets user data, can forsee issues with asynchrnousity
   useEffect(() => {
-
-    if (isCreationStepDoneOrPassed){
-      console.log("display data now");
+    async function fetchUserData() {
+      const accessToken = await getAccessTokenSilently();
+      const response = await axios.get(`http://localhost:4000/api/learningPage/get-user-data/${user.sub}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          // Add any other custom headers here if needed
+        },
+      });
+      console.log('Response:', response.data);
+      setUserData(response.data[0]);
     }
 
-  }, [isCreationStepDoneOrPassed]);
+    if (isCreationStepDoneOrPassed && user && isAuthenticated){
+      fetchUserData();
+    }
+
+  }, [isCreationStepDoneOrPassed, user, isAuthenticated]);
 
   // Gets pages that user has made
   useEffect(() => {
@@ -128,11 +140,14 @@ export default function ProfilePage() {
             <img src={user?.picture} alt="Image of user" />
           </div>
           <div className="profileDataDataContainer">
-            <p>Data: hjkfhdjsfkhdk</p>
-            <p>Data: hjkfhdjsfkhdk</p>
-            <p>Data: hjkfhdjsfkhdk</p>
-            <p>Data: hjkfhdjsfkhdk</p>
-            <p>Data: hjkfhdjsfkhdk</p>
+            {userData ? (
+              <>
+                <p>Name: {userData.name}</p>
+                <p>Games Played: {userData.games_played}</p>
+              </>
+            ) : (
+              <p>User data is not available.</p>
+            )}
           </div>
         </div>
         : ""}
