@@ -59,8 +59,11 @@ hr {
     /* justify-self: center; */
 }
 
-.logo {
-    width: 75px;
+/* This makes no sense, one is for underline and one is for color */
+#logo h2, #logo{
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 130%;
 }
 
 .searchbarContainer {
@@ -102,7 +105,7 @@ hr {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    position: relative;
+    /* position: relative; */
 
 }
 
@@ -120,18 +123,24 @@ hr {
 
 .navDropDown {
     position: absolute;
-    top: 100%;
-    left: 70%;
-    background-color: var(--light-main-color);
-    border: 1px solid var(--border-color);
-    padding: 5px;
-    width: 100px;
+    top: 100px;
+    right: 0; /* Position it at the right */
+    width: auto; /* Let the content determine the width */
+    max-width: 300px; /* Set a maximum width for responsiveness */
+    height: 100vh; /* Adjust height based on content */
+    background-color: var(--body-color);
+    border: 1px solid var(--accent-color);
+    padding: 10px;
     z-index: 1;
+    display: block;
 }
 
 .navDropDown>* {
-    padding: 5px;
-    margin: 5px;
+    padding: 10px;
+    display: block;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+    margin: 20px auto;
 }
 
 .navDropDown button a {
@@ -143,8 +152,8 @@ hr {
 
 .hero-container {
     margin: 0 0;
-    background: rgb(23,23,22);
-    background: linear-gradient(0deg, rgba(9, 9, 11, 1) 0%, rgba(108, 194, 106, 1) 50%, rgba(9, 9, 11, 1) 100%);
+    background: rgb(108,194,106);
+    background: radial-gradient(circle, rgba(108,194,106,1) 0%, rgba(9,9,11,1) 95%);
     height: 500px;
     position: relative;
     color: var(--dark-font-color)
@@ -461,7 +470,7 @@ th {
     border-radius: 20px;
     border: 1px solid var(--accent-color);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
-
+    margin: 10px;
 }
 
 .profileMakePageButtonContainer {
@@ -533,5 +542,8 @@ th {
         display: block;
         text-align: center;
         padding: 10px;
+    }
+    .navDropDown {
+        top: 180px;
     }
 }

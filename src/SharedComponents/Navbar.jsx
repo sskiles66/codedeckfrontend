@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="navItems">
         {/* Logo */}
         <div className="logoContainer">
-          <Link to="/" type="button"><img className="logo" src="/logo2.jpg" /></Link>
+          <Link to="/" id="logo" type="button"><h2>CodeDeck</h2></Link>
         </div>
         {/* Searchbar */}
         <form className="searchbarContainer" onSubmit={handleSubmit}>
