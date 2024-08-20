@@ -7,11 +7,13 @@ export default function StopWatch() {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setTimer(timer + 1);
+            if (isRunning){
+                setTimer(timer + 1);
+            }
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, [timer]);
+    }, [timer, isRunning]);
 
 
     const formatTime = (time) => {

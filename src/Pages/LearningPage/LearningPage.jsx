@@ -121,7 +121,7 @@ export default function LearningPage() {
               </div>
 
               <p>This is where the game will be</p>
-              <Game />
+              <Game subTopics={pageData.sub_topics}/>
             </>
           )}
           {(pageData.isLocked && role != "creator") && (

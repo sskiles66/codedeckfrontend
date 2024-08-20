@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GameContext } from "./GameContext";
 
-export default function Answers() {
+export default function Answers(props) {
 
-//   const [showMore, setShowMore] = useState(false);
+    const { isRunning } = useContext(GameContext);
+    console.log(props.subTopics)
 
-  return (
-    <div className="gameAnswers">
-    </div>
-  );
+    return (
+
+
+        <div className="gameAnswers">
+            {isRunning && <p>Answers:</p>}
+            {isRunning && props.subTopics.map((item, index) => (
+                <div key={index}>
+                    <p>{item.sub_name}</p>
+                </div>
+            ))}
+        </div>
+    );
 }
