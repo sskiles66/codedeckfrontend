@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GameContext } from "./GameContext";
+import Answer from "./Answer";
 
 export default function Answers(props) {
 
@@ -12,9 +13,9 @@ export default function Answers(props) {
         <div className="gameAnswers">
             {isRunning && <p>Answers:</p>}
             {isRunning && props.subTopics.map((item, index) => (
-                <div key={index}>
-                    <p>{item.sub_name}</p>
-                </div>
+    
+                <Answer answer={item} key={index} keyAnswer={index}/>
+
             ))}
         </div>
     );
