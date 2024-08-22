@@ -8,15 +8,14 @@ export default function Answers(props) {
     console.log(props.subTopics)
 
     return (
-
-
-        <div className="gameAnswers">
-            {isRunning && <p>Answers:</p>}
-            {isRunning && props.subTopics.map((item, index) => (
-    
-                <Answer answer={item} key={index} keyAnswer={index}/>
-
-            ))}
-        </div>
+        isRunning ? (
+            <div className="gameAnswers">
+                {props.subTopics.map((item, index) => (
+                    <Answer answer={item} key={index} keyAnswer={index} />
+                ))}
+            </div>
+        ) : (
+            ""
+        )
     );
 }

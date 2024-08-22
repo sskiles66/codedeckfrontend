@@ -5,17 +5,19 @@ export default function Answer(props) {
 
     console.log(props.subTopics)
 
-    const { questionNum, setQuestionNum, score, setScore, correctAnswer  } = useContext(GameContext);
+    const { questionNum, setQuestionNum, score, setScore, correctAnswer, isGameOver, setIsGameOver  } = useContext(GameContext);
 
 
     function checkAnswer(e){
         e.preventDefault();
-        console.log(correctAnswer);
-        console.log(props.keyAnswer);
-        if (correctAnswer == props.keyAnswer){
-            setScore(score + 1);
+        // console.log(correctAnswer);
+        // console.log(props.keyAnswer);
+        if (!isGameOver){
+            if (correctAnswer == props.keyAnswer){
+                setScore(score + 1);
+            }
+            setQuestionNum(questionNum + 1);
         }
-        setQuestionNum(questionNum + 1);
     }
 
     return (

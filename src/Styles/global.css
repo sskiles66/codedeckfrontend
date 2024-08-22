@@ -498,6 +498,42 @@ th {
 }
 
 
+/* Game Styles */
+.game {
+    background-color: var(--card-color);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    margin: 50px 0;
+    row-gap: 20px;
+    column-gap: 20px;
+    /* justify-content: center; */
+    /* align-items: center;  */
+}
+
+.game > * {
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    align-items: center; 
+}
+
+.gameAnswers {
+    grid-column: 1/3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.gameAnswer {
+    margin: 10px;
+}
+
+.gameAnswer button {
+    width: 100px;
+}
+
+
 /* Mobile view*/
 
 @media screen and (max-width: 680px) {

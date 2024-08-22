@@ -3,11 +3,11 @@ import { GameContext } from "./GameContext";
 
 export default function StopWatch() {
 
-    const { timer, setTimer, isRunning, setIsRunning } = useContext(GameContext);
+    const { timer, setTimer, isRunning, setIsRunning, isGameOver } = useContext(GameContext);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            if (isRunning){
+            if (isRunning && !isGameOver){
                 setTimer(timer + 1);
             }
         }, 1000);

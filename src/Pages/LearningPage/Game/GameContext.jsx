@@ -16,6 +16,7 @@ export function GameContextProvider({ children }) {
     const [score, setScore] = useState(0);
     const [questionNum, setQuestionNum] = useState(1);
     const [correctAnswer, setCorrectAnswer] = useState();
+    const [isGameOver, setIsGameOver] = useState(false);
 
 
 
@@ -31,7 +32,9 @@ export function GameContextProvider({ children }) {
                 questionNum,
                 setQuestionNum,
                 correctAnswer,
-                setCorrectAnswer
+                setCorrectAnswer,
+                isGameOver,
+                setIsGameOver
             }}
         >
             {children}

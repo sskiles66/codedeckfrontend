@@ -3,7 +3,7 @@ import { GameContext } from "./GameContext";
 
 export default function Question(props) {
 
-    const { isRunning, setCorrectAnswer } = useContext(GameContext);
+    const { isRunning, setCorrectAnswer, questionNum, setIsGameOver } = useContext(GameContext);
 
     const [randomSubTopicProperty, setRandomSubTopicProperty] = useState({});
 
@@ -15,6 +15,9 @@ export default function Question(props) {
 
     useEffect(() => {
         function getRandomSubTopic() {
+            if (questionNum == 11) {
+                setIsGameOver(true);
+            }
             if (props.subTopics.length > 0) {
                 const randomIndex = Math.floor(Math.random() * props.subTopics.length);
                 setRandomIndex(randomIndex);
@@ -22,37 +25,37 @@ export default function Question(props) {
 
                 const validProps = [];
 
-                if (randomTopic.analogy){
+                if (randomTopic.analogy) {
                     validProps.push(randomTopic.analogy)
                 }
-                if (randomTopic.definition){
+                if (randomTopic.definition) {
                     validProps.push(randomTopic.definition)
                 }
-                if (randomTopic.mnenomics){
+                if (randomTopic.mnenomics) {
                     validProps.push(randomTopic.mnenomics)
                 }
-                if (randomTopic.image){
+                if (randomTopic.image) {
                     validProps.push(randomTopic.image)
                 }
-                
-                setValidProperties(validProps);          
+
+                setValidProperties(validProps);
             }
         }
-        if (isRunning == true && count == 0){
+        if (isRunning == true && count == 0) {
             getRandomSubTopic();
             setCount(1);
         }
-    }, [isRunning]);
+    }, [isRunning, questionNum]);
 
 
     useEffect(() => {
-        function getStuff() {
+        function setQuestion() {
             const randomIndex2 = Math.floor(Math.random() * validProperties.length);
-            setRandomSubTopicProperty({ ["propName"] : validProperties[randomIndex2], ["propIndex"] : randomIndex });
+            setRandomSubTopicProperty({ ["propName"]: validProperties[randomIndex2], ["propIndex"]: randomIndex });
             setCorrectAnswer(randomIndex);
         }
-        if (count == 1){
-            getStuff();
+        if (count == 1) {
+            setQuestion();
             setCount(0);
         }
     }, [count])
@@ -60,16 +63,13 @@ export default function Question(props) {
 
     return (
 
-        <div className="gameQuestion">
-            {isRunning && <p>Question</p>}
-            {/* {isRunning && props.subTopics.map((item, index) => (
-                <div key={index}>
-                    <p>{item.sub_name}</p>
-                </div>
-            ))} */}
-            {isRunning && <p>Match this: {randomSubTopicProperty.propName}</p>}
-            {isRunning && <p>Indx: {randomSubTopicProperty.propIndex}</p>}
-            {/* {isRunning && <p>: {props.subTopics[propIndex].sub_name}</p>} */}
-        </div>
+        isRunning ? (
+            <div className="gameQuestion">
+                <p>Question</p>
+                <p>Match this: {randomSubTopicProperty.propName}</p>
+                <p>Indx: {randomSubTopicProperty.propIndex}</p>
+            </div>
+        ) : ""
+        
     );
 }
