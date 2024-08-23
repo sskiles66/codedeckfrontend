@@ -3,12 +3,14 @@ import { GameContext } from "./GameContext";
 
 export default function QuestionNumber() {
 
-    const { questionNum } = useContext(GameContext);
+    const { questionNum, isRunning } = useContext(GameContext);
 
 
     return (
+        isRunning ?
         <div className="gameQuestionNumber">
-            <p>questionNumber: {questionNum}</p>
+            <p>Question #{questionNum}</p>
         </div>
+        : ""
     );
 }

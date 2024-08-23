@@ -6,6 +6,7 @@ import Answers from "./Answers";
 import Question from "./Question";
 import GameSummary from "./GameSummary";
 import QuestionNumber from "./QuestionNumber";
+import GameInstructions from "./GameInstructions";
 
 
 export default function Game(props) {
@@ -15,12 +16,16 @@ export default function Game(props) {
   return (
     <div className="game">
         <GameContextProvider>
+
+            <GameInstructions />
+
             <StopWatch />
             <Score />
             <QuestionNumber />
             <Answers subTopics={props.subTopics}/>
             <Question subTopics={props.subTopics}/>
             <GameSummary />
+            
         </GameContextProvider>
     </div>
   );

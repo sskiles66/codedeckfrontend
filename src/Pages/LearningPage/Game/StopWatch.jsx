@@ -23,8 +23,10 @@ export default function StopWatch() {
     };
 
     return (
+        isRunning ?
         <div className="gameTimer">
-            {isRunning ? <p>Time: {formatTime(timer)}</p> : <button onClick={() => setIsRunning(true)}>Click To Start</button>}
+            <p>Time: {formatTime(timer)}</p>
         </div>
+        : ""
     );
 }

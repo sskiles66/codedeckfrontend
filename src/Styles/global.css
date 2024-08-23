@@ -533,6 +533,28 @@ th {
     width: 100px;
 }
 
+.gameTimer {
+    grid-column: 2/3;
+}
+
+.gameInstructions {
+    grid-column: 1/4;
+    grid-row: 1/4;
+}
+
+.gameInstructions button {
+    margin: 20px;
+}
+
+.gameQuestionNumber {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}  
+
+.gameSummary {
+    grid-column: 1/4;
+}
+
 
 /* Mobile view*/
 
