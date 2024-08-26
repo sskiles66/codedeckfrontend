@@ -34,9 +34,9 @@ export default function Question(props) {
                 if (randomTopic.mnenomics) {
                     validProps.push(randomTopic.mnenomics)
                 }
-                if (randomTopic.image) {
-                    validProps.push(randomTopic.image)
-                }
+                // if (randomTopic.image) {
+                //     validProps.push(randomTopic.image)
+                // }
 
                 setValidProperties(validProps);
             }
@@ -70,6 +70,6 @@ export default function Question(props) {
                 <p>Indx: {randomSubTopicProperty.propIndex}</p>
             </div>
         ) : ""
-        
+
     );
 }
