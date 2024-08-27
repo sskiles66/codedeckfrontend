@@ -90,9 +90,6 @@ export default function LearningPage() {
 
                 <h1>{pageData.name}</h1>
 
-                {/* COme back to this once game is good to go */}
-                {/* <LeaderBoard /> */}
-
                 <p className="summary">{pageData.summary}</p>
 
                 {/* Editor privledges */}
@@ -105,6 +102,8 @@ export default function LearningPage() {
                   </>
                 )}
               </div>
+
+              <LeaderBoard />
 
               <div className="accordionContainer">
                 <Accordion subs={pageData.sub_topics} />
