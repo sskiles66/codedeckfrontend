@@ -4,6 +4,8 @@ export default function AccordionItem(props) {
 
   const [showMore, setShowMore] = useState(false);
 
+  console.log(props);
+
   return (
     <div className="learnAccordionItem" key={props.index}>
       <div className="learnAccordionItemHeader">
@@ -30,7 +32,8 @@ export default function AccordionItem(props) {
             </div>
             <div className="learnAccordionImage">
               <h4>Image:</h4>
-              <img src={`${props.item.image}`} alt="Your Image" />
+              {props.item.image ? <img src={`${props.item.image}`} alt="Your Image" /> : <img src={`https://placehold.co/1280x720`} alt="Placeholder Image" /> }
+              {/* <img src={`${props.item.image}`} alt="Your Image" /> */}
             </div>
           </div>
         </div>

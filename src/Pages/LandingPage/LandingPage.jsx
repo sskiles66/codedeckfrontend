@@ -3,7 +3,6 @@ import Hero from "./Hero";
 // import MostRecent from "./MostRecent";
 // import MostPop from "./MostPop";
 // import Languages from "./Languages";
-import "../../Styles/LandingPage.css"
 import Cards from "../../SharedComponents/Cards";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";

@@ -127,13 +127,15 @@ hr {
     right: 0; /* Position it at the right */
     width: 150px; /* Let the content determine the width */
     max-width: 300px; /* Set a maximum width for responsiveness */
-    height: 100vh; /* Adjust height based on content */
+    height: auto; /* Adjust height based on content */
     background-color: var(--body-color);
     border: 1px solid var(--accent-color);
     border-top: none;
+    border-right: none;
     padding: 10px;
     z-index: 1;
     display: block;
+    border-bottom-left-radius: 20px;
 }
 
 .navDropDown>* {
@@ -154,8 +156,9 @@ hr {
 
 .hero-container {
     margin: 0 0;
-    background: rgb(108,194,106);
-    background: radial-gradient(circle, rgba(108,194,106,1) 0%, rgba(9,9,11,1) 95%);
+    background: rgb(9,9,11);
+    background: linear-gradient(171deg, rgba(9,9,11,1) 0%, rgba(18,43,18,1) 50%, rgba(9,9,11,1) 100%);
+    /* background-color: #1B1917; */
     height: 500px;
     position: relative;
     color: var(--dark-font-color)
@@ -182,21 +185,23 @@ hr {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    max-width: var(--tier-two-width);
 }
 
 .heroContentContainer h1 {
-    color:var(--dark-font-color);
+    color:var(--accent-color);
     font-size: 600%;
 }
 
 .heroContentContainer p {
-    color:var(--dark-font-color);
+    color:var(--para-font-color);
     font-size: 120%;
     font-weight: bolder;
 }
 
 .heroText {
     text-align: center;
+    line-height: 1.5;
 }
 
 /*Landing Page Cards*/
@@ -248,6 +253,10 @@ hr {
     text-align: center;
 }
 
+.lockButton {
+    margin-top: 50px;
+}
+
 .summaryContainer {
     background-color: var(--card-color);
     padding: 50px 10px 50px 10px;
@@ -255,6 +264,7 @@ hr {
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.8);
     position: relative;
+    line-height: 1.5;
     /* border: 1px solid var(--accent-color); */
 }
 
@@ -297,11 +307,12 @@ th {
     border-radius: 10px;
     margin-bottom: 50px;
     background-color: var(--card-color);
-    padding: 10px;
+    padding: 20px;
     font-family: "Inter", sans-serif;
 }
 
 .leaderboard th {
+    margin: 10px;
     background-color: var(--accent-color);
     border-color: var(--accent-color); 
 }
@@ -523,6 +534,7 @@ th {
     margin: 50px 0;
     row-gap: 20px;
     column-gap: 20px;
+    border-radius: 10px;
     /* justify-content: center; */
     /* align-items: center;  */
 }
@@ -570,6 +582,10 @@ th {
 
 .gameSummary {
     grid-column: 1/4;
+}
+
+.gameSummary button {
+    margin: 10px;
 }
 
 

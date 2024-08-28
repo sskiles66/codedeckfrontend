@@ -77,12 +77,12 @@ export default function LearningPage() {
 
       {pageData ? (
         <>
-          <p>{pageData.isLocked ? "Locked" : "Not locked"}</p>
+          {/* FOr debugging purposes <p>{pageData.isLocked ? "Locked" : "Not locked"}</p> */}
           {(role == "creator" || pageData.isLocked == false) && (
             <>
               {role == "creator" && (
                 <>
-                  <button disabled={pageData.sub_topics.length < 5} onClick={handleEditSubmit}>{pageData.isLocked ? "Click To Unlock" : "Click To Lock"}</button>
+                  <button className="lockButton" disabled={pageData.sub_topics.length < 5} onClick={handleEditSubmit}>{pageData.isLocked ? "Click To Unlock Your Page" : "Click To Lock Your Page"}</button>
                   {pageData.sub_topics.length < 5 ? <p>Need at least 5 sub topics to unlock your page</p> : ""}
                 </>
               )}

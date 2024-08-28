@@ -130,7 +130,7 @@ export default function ProfilePage() {
 
   return (
     <div className="profilePageContainer">
-      {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""}
+      {/* For Debugging purposes {isAuthenticated ? <p>{JSON.stringify(user)}</p> : ""} */}
 
       {user ? <h1>{user.name}</h1> : ""}
 
