@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import Message from "../../SharedComponents/Message";
 
 export default function EditSub(props) {
 
@@ -13,7 +14,26 @@ export default function EditSub(props) {
     const [editMnemonics, setEditMnemonics] = useState("");
     const [editImage2, setEditImage2] = useState();
     // const [editAudio, setEditAudio] = useState("");
+    const [message, setMessage] = useState();
     const { id } = useParams();
+
+    // Timer for lifecycle for message component
+    useEffect(() => {
+
+        async function setTimerOnMessageComponent() {
+            const timerId = setTimeout(() => {
+                setMessage();
+            }, 3000);
+
+            // Clear the timer if the state changes before it expires
+            return () => clearTimeout(timerId);
+        }
+
+        if (message) {
+            setTimerOnMessageComponent();
+        }
+
+    }, [message]);
 
     function handleSubNameChange(e) {
         setEditSubName(e.target.value)
@@ -69,10 +89,22 @@ export default function EditSub(props) {
                 });
 
             // console.log('Response:', response.data);
+            if (response.status == 200) {
+                setMessage({messageType: "Good", message: ["Sub topic has been added"]})
+            }
             onReFetch(!reFetch);
-            toggle(false);
+            // Having this toggle active makes it so the message component doesn't get rendered
+            // toggle(false);
         } catch (error) {
-            console.error('Error making PATCH request:', error);
+            // console.error('Error making PATCH request:', error);
+            let errorsArray = [];
+            // console.log(error.response.data.data.errors)
+            for (const key in error.response.data.data.errors) {
+                // Access the array of strings for the current key
+                const stringValues = error.response.data.data.errors[key];
+                errorsArray.push(stringValues[0]);
+            }
+            setMessage({messageType: "Bad", message: errorsArray})
         }
     }
 
@@ -106,6 +138,9 @@ export default function EditSub(props) {
                     <button type="submit">Add Sub Topic</button>
                 </form>
             </div>
+            {message && (
+                <Message message={message} />
+            )}
         </div>
     );
 }

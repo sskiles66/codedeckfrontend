@@ -152,6 +152,27 @@ hr {
     text-decoration: none;
 }
 
+/*Message*/
+
+.message {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--body-color);
+    width: auto;
+    padding: 0 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.good {
+    color: var(--accent-color);
+}
+
+.bad {
+    color: red;
+}
+
 /*Hero*/
 
 .hero-container {

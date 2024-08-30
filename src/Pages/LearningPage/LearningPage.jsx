@@ -7,6 +7,7 @@ import axios from "axios";
 import EditMain from "./EditMain";
 import EditSub from "./EditSub";
 import Game from "./Game/Game";
+import Message from "../../SharedComponents/Message";
 
 export default function LearningPage() {
 
@@ -17,6 +18,7 @@ export default function LearningPage() {
   const [reFetch, setReFetch] = useState(false);
   const [showMainEdit, setShowMainEdit] = useState(false);
   const [showSubEdit, setShowSubEdit] = useState(false);
+  const [message, setMessage] = useState();
 
   // Get all page data
   useEffect(() => {
@@ -46,7 +48,25 @@ export default function LearningPage() {
 
   }, [pageData, isAuthenticated]);
 
-  async function handleEditSubmit(e) {
+  // Timer for lifecycle for message component
+  useEffect(() => {
+
+    async function setTimerOnMessageComponent() {
+      const timerId = setTimeout(() => {
+        setMessage();
+      }, 3000); 
+
+      // Clear the timer if the state changes before it expires
+      return () => clearTimeout(timerId);
+    }
+
+    if (message) {
+      setTimerOnMessageComponent();
+    }
+
+  }, [message]);
+
+  async function handleChangeLockedState(e) {
     e.preventDefault();
     try {
       const accessToken = await getAccessTokenSilently();
@@ -65,12 +85,15 @@ export default function LearningPage() {
       // onReFetch(!reFetch);
       // toggle(false);
       console.log(pageData);
+      // console.log(response.status);
+      if (response.status == 200) {
+        setMessage({messageType: "Good", message: ["Your request worked"]})
+      }
       setPageData({ ...pageData, isLocked: !pageData.isLocked });
     } catch (error) {
       console.error('Error making PATCH request:', error);
     }
   }
-
 
   return (
     <div className="learningPageContainer">
@@ -82,7 +105,7 @@ export default function LearningPage() {
             <>
               {role == "creator" && (
                 <>
-                  <button className="lockButton" disabled={pageData.sub_topics.length < 5} onClick={handleEditSubmit}>{pageData.isLocked ? "Click To Unlock Your Page" : "Click To Lock Your Page"}</button>
+                  <button className="lockButton" disabled={pageData.sub_topics.length < 5} onClick={handleChangeLockedState}>{pageData.isLocked ? "Click To Unlock Your Page" : "Click To Lock Your Page"}</button>
                   {pageData.sub_topics.length < 5 ? <p>Need at least 5 sub topics to unlock your page</p> : ""}
                 </>
               )}
@@ -121,6 +144,9 @@ export default function LearningPage() {
 
               <p>This is where the game will be</p>
               <Game subTopics={pageData.sub_topics}/>
+              {message && (
+                <Message message={message}/>
+              )}
             </>
           )}
           {(pageData.isLocked && role != "creator") && (
