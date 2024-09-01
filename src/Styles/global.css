@@ -181,8 +181,10 @@ hr {
     background: linear-gradient(171deg, rgba(9,9,11,1) 0%, rgba(18,43,18,1) 50%, rgba(9,9,11,1) 100%);
     /* background-color: #1B1917; */
     height: 500px;
-    position: relative;
-    color: var(--dark-font-color)
+    /* position: relative; */
+    color: var(--dark-font-color);
+    display: flex;
+    align-items: center;
 }
 
 .hero {
@@ -197,32 +199,34 @@ hr {
 
 
 .heroContentContainer {
-    position: absolute;
+    /* position: absolute; */
     /* background-color: rgba(44, 26, 29, 0.8); */
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    /* top: 45%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     max-width: var(--tier-two-width);
+    margin: auto auto;
 }
 
 .heroContentContainer h1 {
     color:var(--accent-color);
-    font-size: 600%;
+    font-size: 400%;
 }
 
 .heroContentContainer p {
     color:var(--para-font-color);
-    font-size: 120%;
+    font-size: 110%;
     font-weight: bolder;
 }
 
 .heroText {
     text-align: center;
     line-height: 1.5;
+    margin-bottom: 40px;
 }
 
 /*Landing Page Cards*/
