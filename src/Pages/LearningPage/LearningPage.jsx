@@ -27,9 +27,7 @@ export default function LearningPage() {
       console.log('Response:', response.data);
       setPageData(response.data);
     }
-
     fetchPageData();
-
   }, [reFetch]); // Refetch is for when editing, changes kinda happen in real time.
 
   // Figures out if user is the creator or not
@@ -41,29 +39,23 @@ export default function LearningPage() {
         setRole("visitor");
       }
     }
-
     if (pageData && isAuthenticated) {
       setTheRole();
     }
-
   }, [pageData, isAuthenticated]);
 
   // Timer for lifecycle for message component
   useEffect(() => {
-
     async function setTimerOnMessageComponent() {
       const timerId = setTimeout(() => {
         setMessage();
       }, 3000); 
-
       // Clear the timer if the state changes before it expires
       return () => clearTimeout(timerId);
     }
-
     if (message) {
       setTimerOnMessageComponent();
     }
-
   }, [message]);
 
   async function handleChangeLockedState(e) {
@@ -80,12 +72,6 @@ export default function LearningPage() {
             // Add any other custom headers here if needed
           },
         });
-
-      // console.log('Response:', response.data);
-      // onReFetch(!reFetch);
-      // toggle(false);
-      console.log(pageData);
-      // console.log(response.status);
       if (response.status == 200) {
         setMessage({messageType: "Good", message: ["Your request worked"]})
       }
@@ -112,7 +98,6 @@ export default function LearningPage() {
               <div className="summaryContainer">
 
                 <h1>{pageData.name}</h1>
-
                 <p className="summary">{pageData.summary}</p>
 
                 {/* Editor privledges */}
@@ -129,6 +114,7 @@ export default function LearningPage() {
               <LeaderBoard />
 
               <div className="accordionContainer">
+
                 <Accordion subs={pageData.sub_topics} />
 
                 {/* Editor privledges */}
@@ -140,18 +126,22 @@ export default function LearningPage() {
                     {showSubEdit && <EditSub reFetch={reFetch} onReFetch={setReFetch} toggle={setShowSubEdit} />}
                   </>
                 )}
+
               </div>
 
-              <p>This is where the game will be</p>
               <Game subTopics={pageData.sub_topics}/>
+
               {message && (
                 <Message message={message}/>
               )}
+
             </>
           )}
+
           {(pageData.isLocked && role != "creator") && (
             <p>This page is locked</p>
           )}
+
         </>
       ) : (
         ""
@@ -160,7 +150,3 @@ export default function LearningPage() {
   );
 }
 
-
-
-// Use this for the props for the Game:
-// <Accordion subs={pageData.sub_topics} />

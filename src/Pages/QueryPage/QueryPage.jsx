@@ -10,7 +10,6 @@ export default function QueryPage() {
     const [query, setQuery] = useState("");
     const [pages, setPages] = useState();
 
-
     // set query state to whatever search term is (from url param)
     useEffect(() => {
         setQuery(searchTerm)
@@ -23,17 +22,15 @@ export default function QueryPage() {
             console.log('Response:', response.data);
             setPages(response.data);
         }
-
-        if (searchTerm){
+        if (searchTerm) {
             fetchPages();
         }
-        
     }, [searchTerm]);
 
     return (
         <div className="queryPageContainer">
             {pages && (
-                <Cards cards={pages} title={`Results For: ${query}`}/>
+                <Cards cards={pages} title={`Results For: ${query}`} />
             )}
         </div>
     );

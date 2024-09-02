@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 import Cards from "../../SharedComponents/Cards";
+import ProfileInfo from "./ProfileInfo";
+import CreatePageButton from "./CreatePageButton";
 
 export default function ProfilePage() {
 
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [madePages, setMadePages] = useState([]);
   const [isCreationStepDoneOrPassed, setIsCreationStepDoneOrPassed] = useState(false);
-  const [userData, setUserData] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -21,7 +20,6 @@ export default function ProfilePage() {
     async function handleUserCreation() {
       try {
         const accessToken = await getAccessTokenSilently();
-
         const createUserResponse = await axios.post(
           'http://localhost:4000/api/learningPage/create-user',
           {
@@ -36,47 +34,22 @@ export default function ProfilePage() {
             },
           }
         );
-  
-        console.log('User data saved:', createUserResponse.data);
-
         // Set this when creation is done
         setIsCreationStepDoneOrPassed(true);
-
       } catch (error) {
         console.error('Error saving user data:', error);
       }
     }
-
     // If the user is logged, redirected here and if they don't have a key, set the key so the user does not keep being redirected here
-    if (isAuthenticated && localStorage.getItem('redirect') !== 'false'){
+    if (isAuthenticated && localStorage.getItem('redirect') !== 'false') {
       setRedirectKey();
       handleUserCreation();
-    }else{
+    } else {
       // Just sets right away if not creating a new user
       setIsCreationStepDoneOrPassed(true);
     }
 
   }, [isAuthenticated]);
-
-  // Gets user data, can forsee issues with asynchrnousity
-  useEffect(() => {
-    async function fetchUserData() {
-      const accessToken = await getAccessTokenSilently();
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-user-data/${user.sub}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          // Add any other custom headers here if needed
-        },
-      });
-      console.log('Response:', response.data);
-      setUserData(response.data[0]);
-    }
-
-    if (isCreationStepDoneOrPassed && user && isAuthenticated){
-      fetchUserData();
-    }
-
-  }, [isCreationStepDoneOrPassed, user, isAuthenticated]);
 
   // Gets pages that user has made
   useEffect(() => {
@@ -88,45 +61,12 @@ export default function ProfilePage() {
           // Add any other custom headers here if needed
         },
       });
-      // console.log('Response:', response.data);
       setMadePages(response.data);
     }
-
     if (user && isAuthenticated) {
       getPagesForUser();
     }
-
   }, [user, isAuthenticated]); //Dependicies are so that even if the page is refreshed, this effect hook still runs
-
-  // Posts new page and navigates to it
-  async function handlePageCreation(e) {
-    e.preventDefault();
-    try {
-      const accessToken = await getAccessTokenSilently();
-      const createUserResponse = await axios.post(
-        'http://localhost:4000/api/learningPage/create',
-        {
-          name: "Title",
-          summary: "Summary goes here",
-          sub_topics: [],
-          creator: user.sub,
-          isLocked: true
-
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            // Add any other custom headers here if needed
-          },
-        }
-      );
-
-      // console.log('User data saved:', createUserResponse.data);
-      navigate(`/learningPage/${createUserResponse.data._id}`);
-    } catch (error) {
-      console.error('Error saving user data:', error);
-    }
-  }
 
   return (
     <div className="profilePageContainer">
@@ -134,30 +74,14 @@ export default function ProfilePage() {
 
       {user ? <h1>{user.name}</h1> : ""}
 
-      {user && isAuthenticated ?
-        <div className="profileDataContainer">
-          <div className="profileDataImageContainer">
-            <img src={user?.picture} alt="Image of user" />
-          </div>
-          <div className="profileDataDataContainer">
-            {userData ? (
-              <>
-                <p>Name: {userData.name}</p>
-                <p>Games Played: {userData.games_played}</p>
-              </>
-            ) : (
-              <p>User data is not available.</p>
-            )}
-          </div>
-        </div>
+      {user && isAuthenticated && isCreationStepDoneOrPassed ?
+        <ProfileInfo />
         : ""}
 
       <Cards cards={madePages} title="Your Created Pages" />
 
       {isAuthenticated ?
-        <div className="profileMakePageButtonContainer">
-          <button className="profileMakePageButton" onClick={handlePageCreation}>Make a page</button>
-        </div>
+        <CreatePageButton />
         : ""}
 
     </div>
