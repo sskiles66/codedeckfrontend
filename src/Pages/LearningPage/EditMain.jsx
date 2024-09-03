@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import Message from "../../SharedComponents/Message";
+import returnBaseUrl from "../../getUrl";
 
 export default function EditMain(props) {
 
@@ -48,7 +49,7 @@ export default function EditMain(props) {
         e.preventDefault();
         try {
             const accessToken = await getAccessTokenSilently();
-            const response = await axios.patch("http://localhost:4000/api/learningPage/edit-page", {
+            const response = await axios.patch(`${returnBaseUrl()}/api/learningPage/edit-page`, {
                 name: editName,
                 summary: editSummary,
                 page_id: id

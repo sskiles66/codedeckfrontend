@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
+import returnBaseUrl from "../../getUrl";
 
 
 export default function LeaderBoard() {
 
   const [leaderBoardData, setLeaderBoardData] = useState([]);
-
   const { id } = useParams();
 
   useEffect(() => {
     async function fetchLeaderBoardData() {
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-games/${id}`);
+      const response = await axios.get(`${returnBaseUrl()}/api/learningPage/get-games/${id}`);
       setLeaderBoardData(response.data);
     }
 

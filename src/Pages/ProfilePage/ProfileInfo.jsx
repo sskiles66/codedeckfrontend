@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import returnBaseUrl from "../../getUrl";
 
 export default function ProfileInfo() {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -10,7 +11,7 @@ export default function ProfileInfo() {
     useEffect(() => {
         async function fetchUserData() {
             const accessToken = await getAccessTokenSilently();
-            const response = await axios.get(`http://localhost:4000/api/learningPage/get-user-data/${user.sub}`, {
+            const response = await axios.get(`${returnBaseUrl()}/api/learningPage/get-user-data/${user.sub}`, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                     // Add any other custom headers here if needed

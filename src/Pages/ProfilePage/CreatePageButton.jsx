@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import returnBaseUrl from "../../getUrl";
 
 export default function CreatePageButton() {
 
@@ -14,7 +15,7 @@ export default function CreatePageButton() {
         try {
             const accessToken = await getAccessTokenSilently();
             const createUserResponse = await axios.post(
-                'http://localhost:4000/api/learningPage/create',
+                `${returnBaseUrl()}/api/learningPage/create`,
                 {
                     name: "Title",
                     summary: "Summary goes here",

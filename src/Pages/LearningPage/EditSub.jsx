@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import Message from "../../SharedComponents/Message";
+import returnBaseUrl from "../../getUrl";
 
 export default function EditSub(props) {
 
@@ -73,7 +74,7 @@ export default function EditSub(props) {
         e.preventDefault();
         try {
             const accessToken = await getAccessTokenSilently();
-            const response = await axios.patch("http://localhost:4000/api/learningPage/new-subtopic", {
+            const response = await axios.patch(`${returnBaseUrl()}/api/learningPage/new-subtopic`, {
                 sub_name: editSubName,
                 definition: editDefinition,
                 analogy: editAnalogy,

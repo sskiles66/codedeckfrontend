@@ -7,6 +7,7 @@ import Cards from "../../SharedComponents/Cards";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import returnBaseUrl from "../../getUrl";
 
 export default function LandingPage() {
 
@@ -17,7 +18,7 @@ export default function LandingPage() {
   useEffect(() => {
 
     async function getPagesMostRecent() {
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-most-recent`);
+      const response = await axios.get(`${returnBaseUrl()}/api/learningPage/get-pages-most-recent`);
       // console.log('Response:', response.data);
       setMostRecentCards(response.data);
     }

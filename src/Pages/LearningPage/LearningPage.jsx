@@ -8,6 +8,7 @@ import EditMain from "./EditMain";
 import EditSub from "./EditSub";
 import Game from "./Game/Game";
 import Message from "../../SharedComponents/Message";
+import returnBaseUrl from "../../getUrl";
 
 export default function LearningPage() {
 
@@ -23,7 +24,7 @@ export default function LearningPage() {
   // Get all page data
   useEffect(() => {
     async function fetchPageData() {
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-page/${id}`);
+      const response = await axios.get(`${returnBaseUrl()}/api/learningPage/get-page/${id}`);
       console.log('Response:', response.data);
       setPageData(response.data);
     }
@@ -62,7 +63,7 @@ export default function LearningPage() {
     e.preventDefault();
     try {
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.patch("http://localhost:4000/api/learningPage/edit-lock", {
+      const response = await axios.patch(`${returnBaseUrl()}/api/learningPage/edit-lock`, {
         isLocked: pageData.isLocked,
         page_id: id,
       },

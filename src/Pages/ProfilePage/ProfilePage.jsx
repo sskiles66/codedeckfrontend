@@ -4,6 +4,7 @@ import axios from "axios";
 import Cards from "../../SharedComponents/Cards";
 import ProfileInfo from "./ProfileInfo";
 import CreatePageButton from "./CreatePageButton";
+import returnBaseUrl from "../../getUrl";
 
 export default function ProfilePage() {
 
@@ -21,7 +22,7 @@ export default function ProfilePage() {
       try {
         const accessToken = await getAccessTokenSilently();
         const createUserResponse = await axios.post(
-          'http://localhost:4000/api/learningPage/create-user',
+          `${returnBaseUrl()}/api/learningPage/create-user`,
           {
             name: user.name,
             sub_id: user.sub,
@@ -55,7 +56,7 @@ export default function ProfilePage() {
   useEffect(() => {
     async function getPagesForUser() {
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.get(`http://localhost:4000/api/learningPage/get-pages-by-user/${user.sub}`, {
+      const response = await axios.get(`${returnBaseUrl()}/api/learningPage/get-pages-by-user/${user.sub}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           // Add any other custom headers here if needed

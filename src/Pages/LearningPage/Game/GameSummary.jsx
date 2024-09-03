@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { GameContext } from "./GameContext";
 import Message from "../../../SharedComponents/Message";
+import returnBaseUrl from "../../../getUrl";
 
 export default function GameSummary() {
 
@@ -60,7 +61,7 @@ export default function GameSummary() {
     setIsButtonDisabled(true);
     try {
       const createGameResponse = await axios.post(
-        'http://localhost:4000/api/learningPage/create-game',
+        `${returnBaseUrl()}/api/learningPage/create-game`,
         {
           learning_page_id: id,
           user_id: userId,
@@ -77,7 +78,7 @@ export default function GameSummary() {
     }
     try {
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.patch(`http://localhost:4000/api/learningPage/increment-user-games-played/${userId}`,
+      const response = await axios.patch(`${returnBaseUrl()}/api/learningPage/increment-user-games-played/${userId}`,
         {},
         {
           headers: {
