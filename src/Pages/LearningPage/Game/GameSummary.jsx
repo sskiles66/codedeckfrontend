@@ -19,7 +19,9 @@ export default function GameSummary() {
   useEffect(() => {
     function setGameValues() {
       if (isAuthenticated) {
-        setName(user.given_name);
+        if (!user.given_name){
+          setName(user.name);
+        }
         setUserId(user.sub);
       } else {
         setName("Guest");
