@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { HashRouter, Routes, Route} from 'react-router-dom'
 import Navbar from './SharedComponents/Navbar';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LearningPage from './Pages/LearningPage/LearningPage';
@@ -15,7 +15,7 @@ function App() {
   axios.defaults.withCredentials = true;
 
   return (
-      <BrowserRouter>
+      <HashRouter>
         <Navbar />
         <Routes>
           
@@ -25,7 +25,7 @@ function App() {
           <Route path="/queryPage/:searchTerm" element={<QueryPage />}/>
 
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
   );
 }
 
