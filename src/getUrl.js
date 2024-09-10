@@ -6,6 +6,9 @@ export default function returnBaseUrl() {
     if (developmentString == "development") {
         baseUrl = "http://localhost:4000"
     }
+    if (developmentString == "staging") {
+        baseUrl = "https://codedeckbe.onrender.com"
+    }
     
     return baseUrl;
 }

@@ -7,10 +7,11 @@ import LearningPage from './Pages/LearningPage/LearningPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import QueryPage from './Pages/QueryPage/QueryPage';
 import axios from "axios";
+import returnBaseUrl from './getUrl';
 
 function App() {
 
-  axios.defaults.baseURL = "http://localhost:4000";
+  axios.defaults.baseURL = returnBaseUrl();
   axios.defaults.withCredentials = true;
 
   return (
